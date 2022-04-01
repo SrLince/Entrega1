@@ -1,0 +1,83 @@
+body{
+    margin: 0em;
+}
+.cover{
+    height: 400px;
+    background-image: url("../img/inicio.jpg");
+    color: white;
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(0, 0, 0, 0.25);
+    background-blend-mode: darken;
+}
+.cover-small{
+    height: 200px;
+    background-blend-mode: none;
+}
+
+.card{
+    border: 0 !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.card-title{
+    min-height: 3rem;
+}
+.card-text{
+    min-height: 10rem;
+    text-align: justify;
+}
+
+.pie-de-pagina{
+    width: 100%;
+    background-color: #0a141d;
+}
+.pie-de-pagina .grupo-1{
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 50px;
+    padding: 45px 0px;
+}
+
+.pie-de-pagina .grupo-1 .box figure{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pie-de-pagina .grupo-1 .box figure img{
+    width: 250px;
+}
+
+.pie-de-pagina .grupo-1 .box h2{
+    color: white;
+    margin-bottom: 25px;
+    font-size: 20px;
+}
+
+.pie-de-pagina .grupo-1 .box p{
+    color: white;
+    margin-bottom: 10px;
+}
+
+.pie-de-pagina .grupo-1 .red-social a{
+    display: inline-block;
+    text-decoration: none;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    color: white;
+    margin-right: 10px;
+    background-color: black;
+    text-align: center;
+    transition: all 300ms ease;
+}
+
+.pie-de-pagina .grupo-1 .red-social a:hover{
+    color: aqua;
+}
