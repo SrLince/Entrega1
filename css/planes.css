@@ -1,9 +1,12 @@
 body{
     margin: 0em;
+    display: flex;
+    flex-direction: column;
 }
 
 .content{
     padding: 10px 50px;
+    flex-grow: 1;
 }
 
 .if-footer{
