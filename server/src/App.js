@@ -13,8 +13,7 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-app.use('/api/admin', require('./routes/admin'));
-app.use('/api/user', require('./routes/user'));
+app.use('/api/planes', require('./routes/planes'));
 
 // Server
 app.listen(app.get('port'), () => {
