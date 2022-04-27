@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const planesController = require('../controllers/planesController');
 
-router.get('/planes', planesController.verPlanes);
+router.get('/verPlanes', planesController.verPlanes);
 //router.get('/verEvento/:id', adminController.verEvento);
 
 //router.post('/crearEvento', adminController.crearEvento);
