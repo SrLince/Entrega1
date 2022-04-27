@@ -13,18 +13,20 @@ const Navbar = () => {
             <div className="collapse navbar-collapse">
                 <ul className="navbar-nav mr-auto">
                     <li className="nav-item">
-                        <NavLink className="nav-link" exact to="/admin/">Eventos</NavLink>
+                        <NavLink className="nav-link" exact to="/">Inicio</NavLink>
                     </li>
                     <li className="nav-item">
-                        <NavLink className="nav-link" exact to="/admin/usuarios">Usuarios</NavLink>
+                        <NavLink className="nav-link" exact to="/planes">Planes</NavLink>
                     </li>
                     <li className="nav-item">
-                        <NavLink className="nav-link" exact to="/admin/solicitudes">Solicitudes</NavLink>
+                        {/*<NavLink className="nav-link" exact to="/about">Acerca de</NavLink>*/}
                     </li>
                 </ul>
             </div>
+            {/*
             <Link className="btn btn-outline-light" to="/admin/crearEvento">Crear evento</Link>
             <Link className="btn btn-outline-light" to="/admin/crearUsuario">Crear usuario</Link>
+            */}
         </div>
         </nav>
     );
