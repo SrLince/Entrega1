@@ -12,4 +12,14 @@ planesController.verPlanes = (req, res) => {
     });
 };
 
+planesController.crearPlanes = (req, res) => {
+    let query = 'INSERT INTO `planes`(`indice`, `nombre-plan`, `fecha-creacion`, `descripcion`, `estrategia`, `nombre-riesgo`) VALUES ()';
+    mysqlConn.query(query, (err, sql) => {
+        if(err) {
+            res.json(err);
+        }
+        res.send(sql);
+    });
+};
+
 module.exports = planesController;

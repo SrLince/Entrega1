@@ -6,10 +6,8 @@ const Home = () => {
         <section>
             <div className="cover d-flex justify-content-center align-items-center flex-column " style={{backgroundImage: 'url("inicio.jpg")'}}>
                 <h1>Plan de Respuesta para Riesgos</h1>
-                <p>Una guia rapida de mitigación de riesgos en tu proyecto</p>
-                <button className="btn btn-info">
-                    Empezar
-                </button>
+                <p>Una librería de planes para la mitigación de riesgos de tus proyectos</p>
+                <Link className='btn btn-info' to={'/planes'}> Empezar</Link>
             </div>
             <div className="container mt-5 mb-5">
                 <div className="row justify-content-center">

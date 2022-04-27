@@ -9,18 +9,6 @@ body{
     flex-grow: 1;
 }
 
-.if-footer{
-    width: 100% !important;
-    height: 17.9375em !important;
-    display: inherit;
-}
-
-.if-navbar{
-    width: 100% !important;
-    height: 56px !important;
-    display: inherit;
-}
-
 .indice{
     display: flex;
     justify-content: center;
