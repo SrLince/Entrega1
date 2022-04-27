@@ -1,3 +1,4 @@
+/*
 import React from 'react';
 import './card-style.css';
 import { Link } from 'react-router-dom';
@@ -22,3 +23,4 @@ const Card = props => {
 };
 
 export default Card;
+*/

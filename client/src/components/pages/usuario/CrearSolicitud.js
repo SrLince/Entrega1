@@ -1,3 +1,4 @@
+/*
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Axios from 'axios';
@@ -78,3 +79,4 @@ const CrearSolicitud = () => {
 };
 
 export default CrearSolicitud;
+*/

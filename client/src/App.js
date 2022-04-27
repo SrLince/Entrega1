@@ -1,9 +1,13 @@
 import React from 'react';
 import './App.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
+
 import Navbar from './components/layout/Navbar';
-import Admin from './components/pages/admin/Admin';
 import Home from './components/pages/usuario/Home';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+/*
+import Admin from './components/pages/admin/Admin';
 import VerEventoUsuario from './components/pages/usuario/VerEvento';
 import CrearSolicitud from './components/pages/usuario/CrearSolicitud';
 import CancelarSolicitud from './components/pages/usuario/CancelarSolicitud';
@@ -15,8 +19,8 @@ import VerEvento from './components/pages/admin/VerEvento';
 import CrearEvento from './components/pages/admin/CrearEvento';
 import EditarEvento from './components/pages/admin/EditarEvento';
 import NotFound from './components/pages/admin/NotFound';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Solicitudes from './components/pages/admin/Solicitudes';
+*/
 
 function App() {
   return (
@@ -26,6 +30,7 @@ function App() {
         
         <Switch>
           <Route exact path='/' component={Home} />
+          {/*
           <Route exact path='/verEvento/:id' component={VerEventoUsuario} />
           <Route exact path='/crearSolicitud/:id' component={CrearSolicitud} />
           <Route exact path='/cancelarSolicitud/:id' component={CancelarSolicitud} />
@@ -41,6 +46,7 @@ function App() {
           <Route exact path='/admin/solicitudes' component={Solicitudes} />
 
           <Route component={NotFound} />
+        */}
         </Switch>
       </div>
     </Router>

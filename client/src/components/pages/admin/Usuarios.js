@@ -1,3 +1,4 @@
+/*
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import { useParams } from 'react-router-dom';
@@ -56,3 +57,4 @@ const Usuarios = () => {
 };
 
 export default Usuarios;
+*/

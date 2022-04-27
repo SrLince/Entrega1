@@ -1,8 +1,12 @@
+/*
 import React, { useState, useEffect } from 'react';
 import Card from '../../layout/Card';
 import Axios from 'axios';
+*/
 
 const Home = () => {
+    return("Hola Mundo!");
+    /*
     const [cards, setCards] = useState([]);
     
     useEffect(() => {
@@ -36,7 +40,7 @@ const Home = () => {
                 </div>
             </div>
         </div>
-    );
+    );*/
 };
 
 export default Home;
