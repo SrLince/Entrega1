@@ -3,7 +3,7 @@ const { mysql } = require('../config/database');
 const planesController = {};
 
 planesController.verPlanes = (req, res) => {
-    let query = 'SELECT `indice`, `nombre_plan`, DATE_FORMAT(`fecha_creacion`, "%d-%m-%Y"), `descripcion`, `estrategia`, `nombre_riesgo` FROM planes;';
+    let query = 'SELECT `indice`, `nombre_plan`, DATE_FORMAT(`fecha_creacion`, "%d-%m-%Y") AS fecha_creacion, `descripcion`, `estrategia`, `nombre_riesgo` FROM planes;';
     mysqlConn.query(query, (err, sql) => {
         if(err) {
             res.json(err);
