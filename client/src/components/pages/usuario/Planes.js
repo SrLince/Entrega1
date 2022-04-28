@@ -20,25 +20,36 @@ const Planes = () => {
         <div className="content mt-5 mb-5">
             <nav className="navbar navbar-expand-lg navbar-light">
                 <div className="container-fluid">
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li className="nav-item dropdown">
-                        <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Ordenar por:
-                        </a>
-                        <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a className="dropdown-item" href="#">Nombre plan</a></li>
-                        <li><a className="dropdown-item" href="#">Fecha creacion</a></li>
-                        <li><a className="dropdown-item" href="#">Descripción</a></li>
-                        <li><a className="dropdown-item" href="#">Estrategia</a></li>
+                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li className="nav-item dropdown">
+                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Ordenar por:
+                            </a>
+                            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a className="dropdown-item" href="#">Nombre plan</a></li>
+                            <li><a className="dropdown-item" href="#">Fecha creacion</a></li>
+                            <li><a className="dropdown-item" href="#">Descripción</a></li>
+                            <li><a className="dropdown-item" href="#">Estrategia</a></li>
+                            </ul>
+                        </li>
+                        <li className="nav-item dropdown">
+                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Filtrar por:
+                            </a>
+                            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a className="dropdown-item" href="#">Nombre plan</a></li>
+                            <li><a className="dropdown-item" href="#">Fecha creacion</a></li>
+                            <li><a className="dropdown-item" href="#">Descripción</a></li>
+                            <li><a className="dropdown-item" href="#">Estrategia</a></li>
+                            </ul>
+                        </li>
                         </ul>
-                    </li>
-                    </ul>
-                    <form className="d-flex">
-                    <input className="form-control me-2" type="search" placeholder="Buscar un Plan" aria-label="Search"/>
-                    <button className="btn btn-outline-success" type="submit">Buscar</button>
-                    </form>
-                </div>
+                        <form className="d-flex">
+                        <input className="form-control me-2" type="search" placeholder="Buscar un Plan" aria-label="Search"/>
+                        <button className="btn btn-outline-success" type="submit">Buscar</button>
+                        </form>
+                    </div>
                 </div>
             </nav>
             <table className="table">

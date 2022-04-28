@@ -14,7 +14,6 @@ planesController.verPlanes = (req, res) => {
 
 planesController.crearPlanes = (req, res) => {
     const {nombre_plan, fecha_creacion, descripcion, estrategia, nombre_riesgo} = req.body;
-    console.log(req.body);
 
     let query = 'INSERT INTO planes SET ?';
     mysqlConn.query(query,{
