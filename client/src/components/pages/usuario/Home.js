@@ -1,63 +1,42 @@
-import './Home.css'
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import Card from '../../layout/Card';
+import Axios from 'axios';
 
 const Home = () => {
-    return(
-        <section>
-            <div className="cover d-flex justify-content-center align-items-center flex-column " style={{backgroundImage: 'url("inicio.jpg")'}}>
-                <h1>Plan de Respuesta para Riesgos</h1>
-                <p>Una librería de planes para la mitigación de riesgos de tus proyectos</p>
-                <Link className='btn btn-info' to={'/planes'}> Empezar</Link>
-            </div>
-            <div className="container mt-5 mb-5">
-                <div className="row justify-content-center">
-                    <div className="col-12 col-sm-6 col-md-4 col-lg-3 mt-2">
-                        <div className="card">
-                            <div className="cover cover-small" style={{backgroundImage: 'url("box-example.jpg")'}}></div>
-                            <div className="card-body">
-                                <h5 className="card-title">Planes para la dirección de un proyecto</h5>
-                                <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent in sagittis metus. Curabitur id nulla velit. Donec id risus porta arcu aliquet eleifend. Mauris molestie lorem nec tristique posuere. Nunc lectus lacus, ultricies et sodales non, finibus id enim. Duis non gravida nisi. Nulla laoreet dui eu volutpat luctus.</p>
-                                <a href="#" className="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-        
-                    <div className="col-12 col-sm-6 col-md-4 col-lg-3 mt-2">
-                        <div className="card">
-                            <div className="cover cover-small" style={{backgroundImage: 'url("box-example.jpg")'}}></div>
-                            <div className="card-body">
-                                <h5 className="card-title">Planes para la dirección de un proyecto</h5>
-                                <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent in sagittis metus. Curabitur id nulla velit. Donec id risus porta arcu aliquet eleifend. Mauris molestie lorem nec tristique posuere. Nunc lectus lacus, ultricies et sodales non, finibus id enim. Duis non gravida nisi. Nulla laoreet dui eu volutpat luctus.</p>
-                                <a href="#" className="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-        
-                    <div className="col-12 col-sm-6 col-md-4 col-lg-3 mt-2">
-                        <div className="card">
-                            <div className="cover cover-small" style={{backgroundImage: 'url("box-example.jpg")'}}></div>
-                            <div className="card-body">
-                                <h5 className="card-title">Planes para la dirección de un proyecto</h5>
-                                <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent in sagittis metus. Curabitur id nulla velit. Donec id risus porta arcu aliquet eleifend. Mauris molestie lorem nec tristique posuere. Nunc lectus lacus, ultricies et sodales non, finibus id enim. Duis non gravida nisi. Nulla laoreet dui eu volutpat luctus.</p>
-                                <a href="#" className="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
+    const [cards, setCards] = useState([]);
+    
+    useEffect(() => {
+        cargarEventos();
+    }, []);
 
-                    <div className="col-12 col-sm-6 col-md-4 col-lg-3 mt-2">
-                        <div className="card">
-                            <div className="cover cover-small" style={{backgroundImage: 'url("box-example.jpg")'}}></div>
-                            <div className="card-body">
-                                <h5 className="card-title">Planes para la dirección de un proyecto</h5>
-                                <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent in sagittis metus. Curabitur id nulla velit. Donec id risus porta arcu aliquet eleifend. Mauris molestie lorem nec tristique posuere. Nunc lectus lacus, ultricies et sodales non, finibus id enim. Duis non gravida nisi. Nulla laoreet dui eu volutpat luctus.</p>
-                                <a href="#" className="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
+    var items = [];
+
+    const cargarEventos = async () => {
+        const response = await Axios.get("http://localhost:3001/api/user/verEventos");
+        response.data.map((evento) => {
+            console.log(evento);
+            items.push(
+                <Card imgsrc={`${evento.codigo_actividad}.png`} nombre={evento.nombre_actividad} desc={evento.descripción} id_evento={evento.codigo_actividad} />
+            );
+        });
+        setCards(items);
+    };
+
+    return (
+        <div className="container">
+            <div className="py-4">
+                <div className='container-fluid d-flex justify-content-center'>
+                    <div className='row'>
+                        {
+                            cards ?
+                                cards :
+                                cards
+                        }
                     </div>
                 </div>
             </div>
-        </section>
-      );
+        </div>
+    );
 };
 
 export default Home;
