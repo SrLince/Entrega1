@@ -13,13 +13,16 @@ planesController.verPlanes = (req, res) => {
 };
 
 planesController.crearPlanes = (req, res) => {
-    let query = 'INSERT INTO `planes`(`nombre_plan`, DATE_FORMAT(`fecha_creacion`, "%Y-%m-%d"), `descripcion`, `estrategia`, `nombre_riesgo`) SET ?';
+    const {nombre_plan, fecha_creacion, descripcion, estrategia, nombre_riesgo} = req.body;
+    console.log(req.body);
+
+    let query = 'INSERT INTO planes SET ?';
     mysqlConn.query(query,{
         nombre_plan: nombre_plan, 
         fecha_creacion: fecha_creacion, 
         descripcion: descripcion, 
         estrategia: estrategia, 
-        nombre_riesgo: nombre_riesgo, 
+        nombre_riesgo: nombre_riesgo 
     }, (err, sql) => {
         if(err) {
             res.json(err);

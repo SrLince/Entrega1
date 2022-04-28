@@ -8,7 +8,7 @@ const CrearPlan = () => {
         descripcion: "",
         nombre_riesgo: "",
         estrategia: "",
-        fecha_plan: ""
+        fecha_creacion: ""
     });
 
     const { 
@@ -16,7 +16,7 @@ const CrearPlan = () => {
         descripcion,
         nombre_riesgo,
         estrategia,
-        fecha_plan
+        fecha_creacion
 
     } = plan;
 
@@ -57,7 +57,7 @@ const CrearPlan = () => {
                     <div className="form-group">
                         <label htmlFor="fecha_plan">Fecha de la creacion del plan</label>
                         <input type="date" className="form-control form-control-lg"
-                        placeholder="Ingrese la fecha de creación del plan" name="fecha_plan" defaultValue={fecha_plan} onChange={e => onInputChange(e)} />
+                        placeholder="Ingrese la fecha de creación del plan" name="fecha_creacion" defaultValue={fecha_creacion} onChange={e => onInputChange(e)} />
                     </div>
                     <div className='mb-5 mt-5'>
                         <Link className="btn btn-outline-primary" to={`/planes`}>Volver</Link>
