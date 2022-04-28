@@ -56,7 +56,7 @@ const Planes = () => {
                         <tr key={index}>
                             <td>{planes.indice}</td>
                             <td>{planes.nombre_plan}</td>
-                            <td>{planes.fecha_creacion.substring(0,10)}</td>
+                            <td>{planes.fecha_creacion}</td>
                             <td>{planes.descripcion}</td>                            
                             <td>{planes.estrategia}</td>
                         </tr>

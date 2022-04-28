@@ -26,7 +26,7 @@ const CrearPlan = () => {
 
     const onSubmit = async e => {
         e.preventDefault();
-        //await Axios.post("http://localhost:3306/api/", usuario);
+        await Axios.post("http://localhost:3001/api/planes/crearPlanes", plan);
     };
     
     return(
