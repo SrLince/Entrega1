@@ -1,4 +1,4 @@
-import './planes.css';
+import '../css/planes.css';
 import Axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
