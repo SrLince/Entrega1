@@ -29,7 +29,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="grupo-2">
-                <small>&copy;2021 <b>Los gigachat</b> - todos los derechos reservados</small>
+                <small>&copy;2021 <b>Los gigachad</b> - todos los derechos reservados</small>
             </div>
         </footer>
     );
