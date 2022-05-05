@@ -45,7 +45,7 @@ const Planes = () => {
 
     return(
         <>
-        <div className="content mt-5 mb-5">
+        <div className="content mt-5" style={{height: "80vh"}}>
             <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
             <table {...getTableProps()} className="table">
                 <thead>
@@ -75,7 +75,8 @@ const Planes = () => {
                     })}        
                 </tbody>
             </table>
-            <div className='d-flex justify-content-between mt-5 mb-3 ms-2 me-2'>
+        </div>
+        <div className='d-flex justify-content-between mt-3 mb-5 ms-5 me-5'>
                 <span>
                     Página{' '}
                     {pageIndex + 1} de {pageOptions.length}
@@ -92,7 +93,6 @@ const Planes = () => {
                     </div>
                 </div>
             </div>
-        </div>
         </>
     );
 };
