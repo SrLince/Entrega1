@@ -1,3 +1,19 @@
 body{
     height: 100vh;
 }
+
+.table tbody tr:nth-child(odd) {
+    background: #EEE;
+}
+
+.table tbody tr:nth-child(even) {
+    background: #FFF;
+}
+
+.table tbody tr:nth-child(odd):hover, .table tbody tr:nth-child(even):hover {
+    background: #DDD;
+}
+
+.table thead {
+    user-select: none;
+}
