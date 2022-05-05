@@ -30,6 +30,8 @@ const Planes = () => {
         canNextPage, 
         canPreviousPage, 
         pageOptions, 
+        gotoPage, 
+        pageCount, 
         prepareRow,
         state, 
         setGlobalFilter, 
@@ -73,17 +75,19 @@ const Planes = () => {
                     })}        
                 </tbody>
             </table>
-            <div className='d-flex justify-content-between'>
-                <span className="m-3">
+            <div className='d-flex justify-content-between mt-5 mb-3 ms-2 me-2'>
+                <span>
                     Página{' '}
                     {pageIndex + 1} de {pageOptions.length}
                 </span>
                 <div>
-                    <button className="btn btn-primary m-3" onClick={() => previousPage()} disabled={!canPreviousPage}>Anterior</button>
-                    <button className="btn btn-primary m-3" onClick={() => nextPage()} disabled={!canNextPage}>Siguiente</button>
+                    <button className="btn btn-primary me-1" onClick={() => gotoPage(0)} disabled={!canPreviousPage}>{'<<'}</button>
+                    <button className="btn btn-primary ms-1 me-1" onClick={() => previousPage()} disabled={!canPreviousPage}>Anterior</button>
+                    <button className="btn btn-primary ms-1 me-1" onClick={() => nextPage()} disabled={!canNextPage}>Siguiente</button>
+                    <button className="btn btn-primary ms-1" onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>{'>>'}</button>
                 </div>
                 <div>
-                    <div className='m-3'>
+                    <div>
                         <Link className="btn btn-primary" to={`/crearplan`} >Crear Plan</Link>
                     </div>
                 </div>
