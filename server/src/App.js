@@ -6,7 +6,8 @@ const { mysql } = require('./config/database');
 const app = express();
 
 // Settings
-app.set('port', process.env.PORT || 3001);
+//app.set('port', process.env.PORT || 3001);
+app.set('port', 3001);
 
 // Middlewares
 app.use(cors());
