@@ -1,5 +1,6 @@
 import '../css/planes.css';
 import Axios from 'axios';
+import { Link } from 'react-router-dom';
 import React, { useState, useEffect, useMemo } from 'react';
 import { useTable, useSortBy, useGlobalFilter, usePagination } from 'react-table';
 import { COLUMNS } from '../layout/Columns'
@@ -26,6 +27,9 @@ const Planes = () => {
         page, 
         nextPage, 
         previousPage, 
+        canNextPage, 
+        canPreviousPage, 
+        pageOptions, 
         prepareRow,
         state, 
         setGlobalFilter, 
@@ -35,7 +39,7 @@ const Planes = () => {
     },
     useGlobalFilter, useSortBy, usePagination)
 
-    const { globalFilter } = state
+    const { globalFilter, pageIndex } = state
 
     return(
         <>
@@ -69,9 +73,20 @@ const Planes = () => {
                     })}        
                 </tbody>
             </table>
-            <div className='d-flex justify-content-center'>
-                <button className="btn btn-primary m-3" onClick={() => previousPage()}>Anterior</button>
-                <button className="btn btn-primary m-3" onClick={() => nextPage()}>Siguiente</button>
+            <div className='d-flex justify-content-between'>
+                <span className="m-3">
+                    Página{' '}
+                    {pageIndex + 1} de {pageOptions.length}
+                </span>
+                <div>
+                    <button className="btn btn-primary m-3" onClick={() => previousPage()} disabled={!canPreviousPage}>Anterior</button>
+                    <button className="btn btn-primary m-3" onClick={() => nextPage()} disabled={!canNextPage}>Siguiente</button>
+                </div>
+                <div>
+                    <div className='m-3'>
+                        <Link className="btn btn-primary" to={`/crearplan`} >Crear Plan</Link>
+                    </div>
+                </div>
             </div>
         </div>
         </>
