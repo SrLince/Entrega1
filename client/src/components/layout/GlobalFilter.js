@@ -5,7 +5,7 @@ const GlobalFilter = ({ filter, setFilter }) => {
         <nav className="navbar navbar-expand-lg navbar-light">
             <div className="container-fluid mb-4">
                 <div className="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
-                    <h2>Planes</h2>
+                    <h1>Planes de respuesta</h1>
                     <form>
                         <input 
                         className="form-control me-2" 
