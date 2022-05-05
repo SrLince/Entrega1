@@ -2,6 +2,10 @@ body{
     height: 100vh;
 }
 
+.form-group {
+    margin-bottom: 1em;
+}
+
 .table tbody tr:nth-child(odd) {
     background: #EEE;
 }
