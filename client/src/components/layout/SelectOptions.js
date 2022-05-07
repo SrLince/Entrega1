@@ -1,7 +1,7 @@
 export const data = {
     estrategias: [
         {
-            nombre: "Estrategia para el riego general del proyecto",
+            nombre: "Estrategia para el riesgo general del proyecto",
             metodo: [
             {
                 nombre: "Aceptación"
