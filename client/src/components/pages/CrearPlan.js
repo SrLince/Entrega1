@@ -83,7 +83,7 @@ const CrearPlan = () => {
                   </div>
                   <div className='form-group'>
                       <label htmlFor='descripcion'>Descripción</label>
-                      <input type='text' className='form-control form-control-lg'
+                      <textarea type='text' className='form-control form-control-lg'
                       placeholder='Ingrese una descripción para el plan' name='descripcion' value={descripcion} onChange={e => onInputChange(e)} />
                   </div>       
                   <div className='form-group'>
