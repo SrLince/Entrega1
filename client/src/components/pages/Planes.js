@@ -45,7 +45,7 @@ const Planes = () => {
 
     return(
         <>
-        <div className="content mt-5" style={{height: "80vh"}}>
+        <div className="content mt-5" style={{minHeight: "100vh"}}>
             <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
             <table {...getTableProps()} className="table">
                 <thead>

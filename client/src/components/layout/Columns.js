@@ -5,7 +5,19 @@ export const COLUMNS = [
     },
     {
         Header: 'Nombre del Plan',
-        accessor: 'nombre_plan'
+        accessor: 'nombre'
+    },
+    {
+        Header: 'Estrategia',
+        accessor: 'estrategia'
+    },
+    {
+        Header: 'Método',
+        accessor: 'metodo'
+    },
+    {
+        Header: 'Riesgo',
+        accessor: 'riesgo'
     },
     {
         Header: 'Fecha de Creación',
@@ -14,9 +26,5 @@ export const COLUMNS = [
     {
         Header: 'Descripción',
         accessor: 'descripcion'
-    },
-    {
-        Header: 'Estrategia',
-        accessor: 'estrategia'
     }
 ]

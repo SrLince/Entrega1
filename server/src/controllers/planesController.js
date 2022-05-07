@@ -3,7 +3,7 @@ const { mysql } = require('../config/database');
 const planesController = {};
 
 planesController.verPlanes = (req, res) => {
-    let query = 'SELECT `id`, `nombre_plan`, DATE_FORMAT(`fecha_creacion`, "%d-%m-%Y") AS fecha_creacion, `descripcion`, `estrategia`, `riesgo` FROM planes;';
+    let query = 'SELECT `id`, `nombre`, DATE_FORMAT(`fecha_creacion`, "%d-%m-%Y") AS fecha_creacion, `descripcion`, `estrategia`, `metodo`, `riesgo` FROM planes;';
     mysqlConn.query(query, (err, sql) => {
         if(err) {
             res.json(err);
@@ -13,14 +13,15 @@ planesController.verPlanes = (req, res) => {
 };
 
 planesController.crearPlanes = (req, res) => {
-    const {nombre_plan, fecha_creacion, descripcion, estrategia, riesgo} = req.body;
+    const {nombre, fecha_creacion, descripcion, estrategia, metodo, riesgo} = req.body;
 
     let query = 'INSERT INTO planes SET ?';
     mysqlConn.query(query,{
-        nombre_plan: nombre_plan, 
+        nombre: nombre, 
         fecha_creacion: fecha_creacion, 
         descripcion: descripcion, 
         estrategia: estrategia, 
+        metodo: metodo,
         riesgo: riesgo 
     }, (err, sql) => {
         if(err) {
