@@ -10,6 +10,7 @@ import Index from './components/pages/Index';
 import Planes from './components/pages/Planes';
 import CrearPlan from './components/pages/CrearPlan';
 import Estrategias from './components/pages/Estrategias';
+import CrearEstrategia from './components/pages/CrearEstrategia';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route exact path='/planes' component={Planes} />
             <Route exact path='/crearplan' component={CrearPlan} />
             <Route exact path='/estrategias' component={Estrategias} />
+            <Route exact path='/crearestrategia' component={CrearEstrategia} />
           </Switch>
           <Footer/>
         </div>
