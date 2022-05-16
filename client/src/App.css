@@ -1,5 +1,20 @@
+:root {
+    --blue: #1b2838;
+    --light-blue: #66c0f4;
+}
+
 body{
     height: 100vh;
+}
+
+.dark-bg {
+    background-color: var(--blue) !important;
+    color: white !important;
+}
+
+.btn.dark-bg:hover {
+    background-color: var(--light-blue) !important;
+    transition: 0.3s !important;
 }
 
 .form-group {
@@ -20,4 +35,15 @@ body{
 
 .table thead {
     user-select: none;
+}
+
+.not-found {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

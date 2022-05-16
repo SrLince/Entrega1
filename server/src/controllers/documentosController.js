@@ -1,8 +1,8 @@
 const mysqlConn = require('../config/database');
 const { mysql } = require('../config/database');
-const planesController = {};
+const documentosController = {};
 
-planesController.verPlanes = (req, res) => {
+documentosController.verDocumentos = (req, res) => {
     let query = 'SELECT `id`, `nombre`, DATE_FORMAT(`fecha_creacion`, "%d-%m-%Y") AS fecha_creacion, `descripcion`, `estrategia`, `metodo`, `riesgo` FROM planes;';
     mysqlConn.query(query, (err, sql) => {
         if(err) {
@@ -12,7 +12,7 @@ planesController.verPlanes = (req, res) => {
     });
 };
 
-planesController.crearPlanes = (req, res) => {
+documentosController.crearDocumentos = (req, res) => {
     const {nombre, fecha_creacion, descripcion, estrategia, metodo, riesgo} = req.body;
 
     let query = 'INSERT INTO planes SET ?';
@@ -31,4 +31,4 @@ planesController.crearPlanes = (req, res) => {
     });
 };
 
-module.exports = planesController;
+module.exports = documentosController;

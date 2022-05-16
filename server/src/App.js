@@ -14,7 +14,7 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-app.use('/api/planes', require('./routes/planes'));
+app.use('/api/documentos', require('./routes/documentos'));
 
 // Server
 app.listen(app.get('port'), () => {

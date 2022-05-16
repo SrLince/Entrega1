@@ -3,21 +3,21 @@ import Axios from 'axios';
 import { Link } from 'react-router-dom';
 import React, { useState, useEffect, useMemo } from 'react';
 import { useTable, useSortBy, useGlobalFilter, usePagination } from 'react-table';
-import { COLUMNS } from '../layout/Columns'
+import { COLUMNS } from '../layout/TMColumns'
 import GlobalFilter from '../layout/GlobalFilter'
 
-const Planes = () => {
+const Documentos = () => {
 
     const columns = useMemo(() => COLUMNS, []);
-    const [data, setPlanes] = useState([]);
+    const [data, setDocumentos] = useState([]);
 
-    const cargarPlanes = async () => {
-        const response = await Axios.get("http://localhost:3001/api/planes/verPlanes");
-        setPlanes(response.data);
+    const cargarDocumentos = async () => {
+        const response = await Axios.get("http://localhost:3001/api/documentos/verDocumentos");
+        setDocumentos(response.data);
     };
 
     useEffect(() => {
-        cargarPlanes();
+        cargarDocumentos();
     }, []);
 
     const { 
@@ -67,9 +67,18 @@ const Planes = () => {
                         prepareRow(row)
                         return (
                             <tr {...row.getRowProps()}>
-                                {row.cells.map((cell) => {
+                                {row.cells.map((cell, index) => {
+                                    if(index === row.cells.length - 1) {
+                                        return (
+                                        <td>
+                                            <Link className="btn dark-bg me-3" to={`/editarDocumento`} >Editar</Link>
+                                            <button className='btn dark-bg'>Eliminar</button>
+                                        </td>
+                                        )
+                                    }
                                     return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-                                })}
+                                })
+                                }
                             </tr>
                         )
                     })}        
@@ -82,14 +91,14 @@ const Planes = () => {
                     {pageIndex + 1} de {pageOptions.length}
                 </span>
                 <div>
-                    <button className="btn btn-primary me-1" onClick={() => gotoPage(0)} disabled={!canPreviousPage}>{'<<'}</button>
-                    <button className="btn btn-primary ms-1 me-1" onClick={() => previousPage()} disabled={!canPreviousPage}>Anterior</button>
-                    <button className="btn btn-primary ms-1 me-1" onClick={() => nextPage()} disabled={!canNextPage}>Siguiente</button>
-                    <button className="btn btn-primary ms-1" onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>{'>>'}</button>
+                    <button className="btn dark-bg me-1" onClick={() => gotoPage(0)} disabled={!canPreviousPage}>{'<<'}</button>
+                    <button className="btn dark-bg ms-1 me-1" onClick={() => previousPage()} disabled={!canPreviousPage}>Anterior</button>
+                    <button className="btn dark-bg ms-1 me-1" onClick={() => nextPage()} disabled={!canNextPage}>Siguiente</button>
+                    <button className="btn dark-bg ms-1" onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>{'>>'}</button>
                 </div>
                 <div>
                     <div>
-                        <Link className="btn btn-primary" to={`/crearplan`} >Crear Plan</Link>
+                        <Link className="btn dark-bg" to={`/creardocumento`} >Crear Documento</Link>
                     </div>
                 </div>
             </div>
@@ -97,4 +106,4 @@ const Planes = () => {
     );
 };
 
-export default Planes;
+export default Documentos;

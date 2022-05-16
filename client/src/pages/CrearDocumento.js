@@ -4,12 +4,12 @@ import Axios from 'axios';
 import Modal from 'bootstrap/js/dist/modal';
 import { data } from '../layout/SelectOptions'
 
-const CrearPlan = () => {
+const CrearDocumento = () => {
     const [selectedStrategy, setSelectedStrategy] = React.useState();
     const [selectedMethod, setSelectedMethod] = React.useState();
     const availableMethod = data.estrategias.find((c) => c.nombre === selectedStrategy);
     
-    const [plan, setPlan] = useState({
+    const [documento, setDocumento] = useState({
         nombre: '',
         descripcion: '',
         riesgo: '',
@@ -25,20 +25,20 @@ const CrearPlan = () => {
         estrategia,
         metodo,
         fecha_creacion
-    } = plan;
+    } = documento;
 
     const onSelectChangeStrategy = e => {
         setSelectedStrategy(e.target.value);
-        setPlan({...plan, [e.target.name]: e.target.value});
+        setDocumento({...documento, [e.target.name]: e.target.value});
     };
 
     const onSelectChangeMethod = e => {
         setSelectedMethod(e.target.value);
-        setPlan({...plan, [e.target.name]: e.target.value});
+        setDocumento({...documento, [e.target.name]: e.target.value});
     };
 
     const onInputChange = e => {
-        setPlan({...plan, [e.target.name]: e.target.value});
+        setDocumento({...documento, [e.target.name]: e.target.value});
     };
 
     function checkForSpecialCharacters(s) {
@@ -49,9 +49,9 @@ const CrearPlan = () => {
     const onSubmit = async e => {
         e.preventDefault();
 
-        const badField = Object.values(plan).some(value => {
+        const badField = Object.values(documento).some(value => {
             if (value === null || value === undefined || value === '') {
-              document.getElementById("modal-body").innerHTML = "Debe completar todos los campos para registrar el plan.";
+              document.getElementById("modal-body").innerHTML = "Debe completar todos los campos para registrar el documento.";
                 return true;
             }
             else if(checkForSpecialCharacters(value)) {
@@ -62,8 +62,8 @@ const CrearPlan = () => {
         });
 
         if(!badField) {
-            await Axios.post('http://localhost:3001/api/planes/crearPlanes', plan)
-            .then(document.getElementById("modal-body").innerHTML = "El plan ha sido ingresado en el sistema.");
+            await Axios.post('http://localhost:3001/api/documento/crearDocumento', documento)
+            .then(document.getElementById("modal-body").innerHTML = "El documento ha sido ingresado en el sistema.");
             document.getElementById("modal-button").onclick = function() { window.location.reload(); };
         }
         const myModal = new Modal(document.getElementById("modal"));
@@ -74,17 +74,17 @@ const CrearPlan = () => {
       <>
       <div className='container mt-5 mb-5'>
           <div className='w-75 mx-auto shadow p-5'>
-              <h2 className='text-center mb-4'>Ingresar Plan de Riesgo</h2>
+              <h2 className='text-center mb-4'>Ingresar Documento</h2>
               <form onSubmit={e => onSubmit(e)}>
                   <div className='form-group'>
-                      <label htmlFor='nombre'>Nombre</label>
+                      <label htmlFor='nombre'>Nombre documento</label>
                       <input type='text' className='form-control form-control-lg' 
-                      placeholder='Ingrese nombre del plan' name='nombre' value={nombre} onChange={e => onInputChange(e)} />
+                      placeholder='Ingrese nombre del documento' name='nombre' value={nombre} onChange={e => onInputChange(e)} />
                   </div>
                   <div className='form-group'>
                       <label htmlFor='descripcion'>Descripción</label>
                       <textarea type='text' className='form-control form-control-lg'
-                      placeholder='Ingrese una descripción para el plan' name='descripcion' value={descripcion} onChange={e => onInputChange(e)} />
+                      placeholder='Ingrese una descripción para el documento' name='descripcion' value={descripcion} onChange={e => onInputChange(e)} />
                   </div>       
                   <div className='form-group'>
                       <label htmlFor='riesgo'>Riesgo</label>
@@ -159,4 +159,4 @@ const CrearPlan = () => {
     );
 };
 
-export default CrearPlan;
+export default CrearDocumento;
