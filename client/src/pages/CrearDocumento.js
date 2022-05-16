@@ -1,83 +1,98 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import Axios from 'axios';
 import Modal from 'bootstrap/js/dist/modal';
-import { data } from '../layout/SelectOptions'
+import Axios from 'axios';
+import { Link } from 'react-router-dom';
+import { data } from '../services/constants/SelectOptions';
 
 const CrearDocumento = () => {
-    const [selectedStrategy, setSelectedStrategy] = React.useState();
-    const [selectedMethod, setSelectedMethod] = React.useState();
-    const availableMethod = data.estrategias.find((c) => c.nombre === selectedStrategy);
+    const [selectedCategory, setSelectedCategory] = React.useState();
+    const [selectedType, setSelectedType] = React.useState();
+    const availableType = data.documentos.find((c) => c.categoria === selectedCategory);
+    const modalMessage = '';
     
     const [documento, setDocumento] = useState({
-        nombre: '',
-        descripcion: '',
-        riesgo: '',
-        estrategia: '',
-        metodo: '',
-        fecha_creacion: ''
+      nombre: '',
+      descripcion: '',
+      categoria: '',
+      tipo: '',
+      archivo: ''
     });
 
     const { 
-        nombre,
-        descripcion,
-        riesgo,
-        estrategia,
-        metodo,
-        fecha_creacion
+      nombre,
+      descripcion,
+      categoria,
+      tipo,
+      archivo
     } = documento;
 
-    const onSelectChangeStrategy = e => {
-        setSelectedStrategy(e.target.value);
-        setDocumento({...documento, [e.target.name]: e.target.value});
+    const onSelectChangeCategory = e => {
+      setSelectedCategory(e.target.value);
+      setDocumento({...documento, [e.target.name]: e.target.value});
     };
 
-    const onSelectChangeMethod = e => {
-        setSelectedMethod(e.target.value);
-        setDocumento({...documento, [e.target.name]: e.target.value});
+    const onSelectChangeType = e => {
+      setSelectedType(e.target.value);
+      setDocumento({...documento, [e.target.name]: e.target.value});
     };
 
     const onInputChange = e => {
-        setDocumento({...documento, [e.target.name]: e.target.value});
+      setDocumento({...documento, [e.target.name]: e.target.value});
     };
 
-    function checkForSpecialCharacters(s) {
-        var format = /[`!@#$%^&*()_+\=\[\]{};':"\\|<>\/?~]/;
-        return format.test(s);
+    const onFileChange = e => {
+      setDocumento({...documento, [e.target.name]: e.target.files[0]});
     };
+
+    /*
+
+    function specialCharacters() {
+      var format = /[`!@#$%^&*()_+\=\[\]{};':"\\|<>\/?~]/;
+      modalMessage = 'Los campos no pueden contener caracteres especiales.';
+      documento.forEach(e => {
+        
+      });
+      return format.test(s);
+    };
+
+    document.getElementById("modal-body").innerHTML
+
+    */
 
     const onSubmit = async e => {
-        e.preventDefault();
+      e.preventDefault();
 
-        const badField = Object.values(documento).some(value => {
-            if (value === null || value === undefined || value === '') {
-              document.getElementById("modal-body").innerHTML = "Debe completar todos los campos para registrar el documento.";
-                return true;
-            }
-            else if(checkForSpecialCharacters(value)) {
-              document.getElementById("modal-body").innerHTML = "Los campos no pueden contener caracteres especiales.";
-              return true;
-            }
-            return false;
-        });
+      /*
+
+      const emptyField = Object.values(documento).some(value => {
+        if (value === null || value === undefined || value === '') {
+          modalMessage = 'Debe completar todos los campos para registrar el documento.';
+          return true;
+        }
+        return false;
+      });
+
+      
 
         if(!badField) {
-            await Axios.post('http://localhost:3001/api/documento/crearDocumento', documento)
-            .then(document.getElementById("modal-body").innerHTML = "El documento ha sido ingresado en el sistema.");
+            await Axios.post('http://localhost:3001/api/planes/crearPlanes', documento)
+            .then(document.getElementById("modal-body").innerHTML = "El plan ha sido ingresado en el sistema.");
             document.getElementById("modal-button").onclick = function() { window.location.reload(); };
         }
         const myModal = new Modal(document.getElementById("modal"));
         myModal.show();
+
+        */
     };
     
     return ( 
       <>
       <div className='container mt-5 mb-5'>
           <div className='w-75 mx-auto shadow p-5'>
-              <h2 className='text-center mb-4'>Ingresar Documento</h2>
+              <h2 className='text-center mb-4'>Crear Documento</h2>
               <form onSubmit={e => onSubmit(e)}>
                   <div className='form-group'>
-                      <label htmlFor='nombre'>Nombre documento</label>
+                      <label htmlFor='nombre'>Nombre</label>
                       <input type='text' className='form-control form-control-lg' 
                       placeholder='Ingrese nombre del documento' name='nombre' value={nombre} onChange={e => onInputChange(e)} />
                   </div>
@@ -85,58 +100,53 @@ const CrearDocumento = () => {
                       <label htmlFor='descripcion'>Descripción</label>
                       <textarea type='text' className='form-control form-control-lg'
                       placeholder='Ingrese una descripción para el documento' name='descripcion' value={descripcion} onChange={e => onInputChange(e)} />
-                  </div>       
-                  <div className='form-group'>
-                      <label htmlFor='riesgo'>Riesgo</label>
-                      <input type='text' className='form-control form-control-lg'
-                      placeholder='Ingrese nombre del riesgo al que responde el plan' name='riesgo' value={riesgo} onChange={e => onInputChange(e)} />
                   </div>
                   <div className='form-group'>
-                      <label htmlFor='estrategia'>Tipo de estrategia</label>
+                      <label htmlFor='categoria'>Categoría del documento</label>
                       <select
                         type='text'
                         className='form-control form-control-lg'
-                        name='estrategia'
-                        value={selectedStrategy}
-                        onChange={(e) => onSelectChangeStrategy(e)}
+                        name='categoria'
+                        value={selectedCategory}
+                        onChange={(e) => onSelectChangeCategory(e)}
                       >
-                        <option selected disabled value={''}>Seleccione tipo de estrategia</option>
-                        {data.estrategias.map((value, key) => {
+                        <option selected disabled value={''}>Seleccione categoría del documento</option>
+                        {data.documentos.map((value, key) => {
                           return (
-                            <option value={value.nombre} key={key}>
-                              {value.nombre}
+                            <option value={value.categoria} key={key}>
+                              {value.categoria}
                             </option>
                           );
                         })}
                       </select>
                   </div> 
                   <div className='form-group'>
-                      <label htmlFor='metodo'>Método de respuesta</label>
+                      <label htmlFor='tipo'>Tipo de documento</label>
                       <select
                         type='text'
                         className='form-control form-control-lg'
-                        name='metodo'
-                        value={selectedMethod}
-                        onChange={(e) => onSelectChangeMethod(e)}
+                        name='tipo'
+                        value={selectedType}
+                        onChange={(e) => onSelectChangeType(e)}
                       >
-                        <option selected disabled value={''}>Seleccione metodo de respuesta</option>
-                        {availableMethod?.metodo.map((e, key) => {
+                        <option selected disabled value={''}>Seleccione tipo del documento</option>
+                        {availableType?.tipos.map((e, key) => {
                           return (
-                            <option value={e.nombre} key={key}>
-                              {e.nombre}
+                            <option value={e.tipo} key={key}>
+                              {e.tipo}
                             </option>
                           );
                         })}
                       </select>
                   </div>                                
                   <div className='form-group'>
-                      <label htmlFor='fecha_creacion'>Fecha de creación</label>
-                      <input type='date' className='form-control form-control-lg'
-                      name='fecha_creacion' defaultValue={fecha_creacion} onChange={e => onInputChange(e)} />
-                  </div>
+                      <label htmlFor='Documento'>Documento del proyecto</label>
+                      <input type='file' className='form-control form-control-lg'
+                      placeholder='Ingrese documento del proyecto' name='archivo' onChange={e => onFileChange(e)} />
+                  </div> 
                   <div className='mb-5 mt-5 d-flex justify-content-end'>
                       <Link className='btn btn-outline-primary' to={`/planes`}>Volver</Link>
-                      <button className='btn btn-primary btn-block' style={{marginLeft:'10px'}} >Crear Plan</button>
+                      <button className='btn dark-bg btn-block ms-5'>Crear documento</button>
                   </div>
               </form>
           </div>

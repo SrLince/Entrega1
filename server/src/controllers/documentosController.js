@@ -13,18 +13,17 @@ documentosController.verDocumentos = (req, res) => {
 };
 
 documentosController.crearDocumentos = (req, res) => {
-    const {nombre, fecha_creacion, descripcion, estrategia, metodo, riesgo} = req.body;
+    const {nombre, descripcion, categoria, tipo, archivo} = req.body;
 
-    let query = 'INSERT INTO planes SET ?';
+    let query = 'INSERT INTO documentos SET ?';
     mysqlConn.query(query,{
         nombre: nombre, 
-        fecha_creacion: fecha_creacion, 
         descripcion: descripcion, 
-        estrategia: estrategia, 
-        metodo: metodo,
-        riesgo: riesgo 
+        categoria: categoria, 
+        tipo: tipo, 
+        archivo: archivo
     }, (err, sql) => {
-        if(err) {
+        if (err) {
             res.json(err);
         }
         res.send(sql);

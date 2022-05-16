@@ -7,6 +7,8 @@ import Navbar from './layouts/header/Navbar';
 import Footer from './layouts/footer/Footer';
 
 import Index from './pages/Index';
+
+import CrearDocumento from './pages/CrearDocumento';
 /*
 import Documentos from './pages/Documentos';
 import CrearDocumento from './pages/CrearDocumento';
@@ -25,6 +27,7 @@ function App() {
           <Navbar />
           <Switch>
             <Route exact path='/' component={Index} />
+            <Route exact path='/documentos/crear' component={CrearDocumento} />
           </Switch>
           <Footer/>
         </div>
