@@ -8,7 +8,7 @@ const CrearDocumento = () => {
     const [selectedCategory, setSelectedCategory] = React.useState();
     const [selectedType, setSelectedType] = React.useState();
     const availableType = data.documentos.find((c) => c.categoria === selectedCategory);
-    const modalMessage = '';
+    var modalMessage = '';
     
     const [documento, setDocumento] = useState({
       nombre: '',
@@ -45,24 +45,14 @@ const CrearDocumento = () => {
     };
 
     /*
-
-    function specialCharacters() {
+    function specialCharacters(s) {
       var format = /[`!@#$%^&*()_+\=\[\]{};':"\\|<>\/?~]/;
-      modalMessage = 'Los campos no pueden contener caracteres especiales.';
-      documento.forEach(e => {
-        
-      });
       return format.test(s);
     };
-
-    document.getElementById("modal-body").innerHTML
-
     */
 
     const onSubmit = async e => {
       e.preventDefault();
-
-      /*
 
       const emptyField = Object.values(documento).some(value => {
         if (value === null || value === undefined || value === '') {
@@ -72,17 +62,15 @@ const CrearDocumento = () => {
         return false;
       });
 
-      
+      if(!emptyField) {
+        await Axios.post('http://localhost:3001/api/documentos/crear', documento);
+        modalMessage = "El documento ha sido ingresado correctamente en el sistema.";
+        document.getElementById("modal-button").onclick = function() { window.location.reload(); };
+      }
 
-        if(!badField) {
-            await Axios.post('http://localhost:3001/api/planes/crearPlanes', documento)
-            .then(document.getElementById("modal-body").innerHTML = "El plan ha sido ingresado en el sistema.");
-            document.getElementById("modal-button").onclick = function() { window.location.reload(); };
-        }
-        const myModal = new Modal(document.getElementById("modal"));
-        myModal.show();
-
-        */
+      document.getElementById("modal-body").innerHTML = modalMessage;
+      const myModal = new Modal(document.getElementById("modal"));
+      myModal.show();
     };
     
     return ( 
