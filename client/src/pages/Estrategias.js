@@ -4,15 +4,15 @@ import React, { useState, useEffect } from 'react';
 
 const Estrategias = () => {
 
-    const [planes, setPlanes] = useState([]);
+    const [estrategias, setEstrategias] = useState([]);
 
-    const cargarPlanes = async () => {
-        const response = await Axios.get("http://localhost:3001/api/planes/verPlanes");
-        setPlanes(response.data);
+    const cargarEstrategias = async () => {
+        const response = await Axios.get("http://localhost:3001/api/estrategias/");
+        setEstrategias(response.data);
     };
 
     useEffect(() => {
-        cargarPlanes();
+        cargarEstrategias();
     }, []);
 
     const renderCard = (card, index) => {
@@ -28,7 +28,7 @@ const Estrategias = () => {
     };
 
     return(
-        <div className="content mt-5" style={{minHeight: "100vh"}}>
+        <div className="container mt-5">
             <nav className="navbar navbar-expand-lg navbar-light">
                 <div className="container-fluid mb-4">
                     <div className="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
@@ -38,7 +38,7 @@ const Estrategias = () => {
                 </div>
             </nav>
             <div className='' style={{backgroundColor: "#ddd"}}>
-                <div className='d-flex m-2 pt-2 pb-2' style={{flexWrap: "wrap"}}>{planes.map((renderCard))}</div>
+                <div className='d-flex m-2 pt-2 pb-2' style={{flexWrap: "wrap"}}>{estrategias.map((renderCard))}</div>
             </div>
         </div>
     );

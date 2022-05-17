@@ -133,7 +133,7 @@ const CrearDocumento = () => {
                       placeholder='Ingrese documento del proyecto' name='archivo' onChange={e => onFileChange(e)} />
                   </div> 
                   <div className='mb-5 mt-5 d-flex justify-content-end'>
-                      <Link className='btn btn-outline-primary' to={`/planes`}>Volver</Link>
+                      <Link className='btn btn-outline-primary' to={`/documentos`}>Volver</Link>
                       <button className='btn dark-bg btn-block ms-5'>Crear documento</button>
                   </div>
               </form>

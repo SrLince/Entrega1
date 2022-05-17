@@ -9,12 +9,8 @@ import Footer from './layouts/footer/Footer';
 import Index from './pages/Index';
 import Documentos from './pages/Documentos';
 import CrearDocumento from './pages/CrearDocumento';
-/*
-
-import CrearDocumento from './pages/CrearDocumento';
 import Estrategias from './pages/Estrategias';
 import CrearEstrategia from './pages/CrearEstrategia';
-*/
 
 import ScrollToTop from './services/actions/ScrollToTop';
 
@@ -29,6 +25,8 @@ function App() {
             <Route exact path='/' component={Index} />
             <Route exact path='/documentos/' component={Documentos} />
             <Route exact path='/documentos/crear' component={CrearDocumento} />
+            <Route exact path='/estrategias/' component={Estrategias} />
+            <Route exact path='/estrategias/crear' component={CrearEstrategia} />
           </Switch>
           <Footer/>
         </div>

@@ -2,36 +2,37 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
 import Modal from 'bootstrap/js/dist/modal';
-import { data } from '../layout/SelectOptions';
+import { data } from '../services/constants/SelectOptions';
 
 const CrearEstrategia = () => {
-    const [selectedStrategy, setSelectedStrategy] = React.useState();
     const [selectedMethod, setSelectedMethod] = React.useState();
-    const availableMethod = data.estrategias.find((c) => c.nombre === selectedStrategy);
+    const [selectedType, setSelectedType] = React.useState();
+    const availableType = data.estrategias.find((c) => c.metodo === selectedMethod);
+    var modalMessage = '';
     
     const [estrategia, setEstrategia] = useState({
         nombre: '',
-        tipo: '',
+        descripcion: '',
         metodo: '',
-        condicion: '',
-        descripcion: ''
+        tipo: '',
+        condicion: ''
     });
 
     const { 
         nombre,
-        tipo,
+        descripcion,
         metodo,
-        condicion,
-        descripcion
+        tipo,
+        condicion
     } = estrategia;
-
-    const onSelectChangeStrategy = e => {
-        setSelectedStrategy(e.target.value);
-        setEstrategia({...estrategia, [e.target.name]: e.target.value});
-    };
 
     const onSelectChangeMethod = e => {
         setSelectedMethod(e.target.value);
+        setEstrategia({...estrategia, [e.target.name]: e.target.value});
+    };
+
+    const onSelectChangeType = e => {
+        setSelectedType(e.target.value);
         setEstrategia({...estrategia, [e.target.name]: e.target.value});
     };
 
@@ -39,33 +40,31 @@ const CrearEstrategia = () => {
         setEstrategia({...estrategia, [e.target.name]: e.target.value});
     };
 
+    /*
     function checkForSpecialCharacters(s) {
         var format = /[`!@#$%^&*()_+\=\[\]{};':"\\|<>\/?~]/;
         return format.test(s);
     };
+    */
 
     const onSubmit = async e => {
         e.preventDefault();
 
-        const badField = Object.values(estrategia).some(value => {
+        const emptyField = Object.values(estrategia).some(value => {
             if (value === null || value === undefined || value === '') {
-              document.getElementById("modal-body").innerHTML = "Debe completar todos los campos para registrar el plan.";
+              modalMessage = "Debe completar todos los campos para registrar la estrategia.";
                 return true;
-            }
-            else if(checkForSpecialCharacters(value)) {
-              document.getElementById("modal-body").innerHTML = "Los campos no pueden contener caracteres especiales.";
-              return true;
             }
             return false;
         });
 
-        if(!badField) {
-            /*
-            await Axios.post('http://localhost:3001/api/planes/crearPlanes', estrategia)
-            .then(document.getElementById("modal-body").innerHTML = "El plan ha sido ingresado en el sistema.");
+        if(!emptyField) {
+            await Axios.post('http://localhost:3001/api/estrategias/crear', estrategia)
+            modalMessage = "La estrategia ha sido ingresada correctamente en el sistema.";
             document.getElementById("modal-button").onclick = function() { window.location.reload(); };
-            */
         }
+
+        document.getElementById("modal-body").innerHTML = modalMessage;
         const myModal = new Modal(document.getElementById("modal"));
         myModal.show();
     };
@@ -74,32 +73,13 @@ const CrearEstrategia = () => {
       <>
       <div className='container mt-5 mb-5'>
           <div className='w-75 mx-auto shadow p-5'>
-              <h2 className='text-center mb-4'>Ingresar Estrategia</h2>
+              <h2 className='text-center mb-4'>Crear Estrategia</h2>
               <form onSubmit={e => onSubmit(e)}>
                   <div className='form-group'>
                       <label htmlFor='nombre'>Nombre</label>
                       <input type='text' className='form-control form-control-lg' 
                       placeholder='Ingrese nombre de la estrategia' name='nombre' value={nombre} onChange={e => onInputChange(e)} />
                   </div>
-                  <div className='form-group'>
-                      <label htmlFor='estrategia'>Tipo de estrategia</label>
-                      <select
-                        type='text'
-                        className='form-control form-control-lg'
-                        name='estrategia'
-                        value={selectedStrategy}
-                        onChange={(e) => onSelectChangeStrategy(e)}
-                      >
-                        <option selected disabled value={''}>Seleccione tipo de estrategia</option>
-                        {data.estrategias.map((value, key) => {
-                          return (
-                            <option value={value.nombre} key={key}>
-                              {value.nombre}
-                            </option>
-                          );
-                        })}
-                      </select>
-                  </div> 
                   <div className='form-group'>
                       <label htmlFor='metodo'>Método de estrategia</label>
                       <select
@@ -109,11 +89,30 @@ const CrearEstrategia = () => {
                         value={selectedMethod}
                         onChange={(e) => onSelectChangeMethod(e)}
                       >
-                        <option selected disabled value={''}>Seleccione metodo de estrategia</option>
-                        {availableMethod?.metodo.map((e, key) => {
+                        <option selected disabled value={''}>Seleccione método de estrategia</option>
+                        {data.estrategias.map((value, key) => {
                           return (
-                            <option value={e.nombre} key={key}>
-                              {e.nombre}
+                            <option value={value.metodo} key={key}>
+                              {value.metodo}
+                            </option>
+                          );
+                        })}
+                      </select>
+                  </div> 
+                  <div className='form-group'>
+                      <label htmlFor='tipo'>Tipo de estrategia</label>
+                      <select
+                        type='text'
+                        className='form-control form-control-lg'
+                        name='tipo'
+                        value={selectedType}
+                        onChange={(e) => onSelectChangeType(e)}
+                      >
+                        <option selected disabled value={''}>Seleccione tipo de estrategia</option>
+                        {availableType?.tipos.map((e, key) => {
+                          return (
+                            <option value={e.tipo} key={key}>
+                              {e.tipo}
                             </option>
                           );
                         })}
@@ -130,8 +129,8 @@ const CrearEstrategia = () => {
                       placeholder='Ingrese una descripción para la estrategia' name='descripcion' value={descripcion} onChange={e => onInputChange(e)} />
                   </div> 
                   <div className='mb-5 mt-5 d-flex justify-content-end'>
-                      <Link className='btn btn-outline-primary' to={`/planes`}>Volver</Link>
-                      <button className='btn btn-primary btn-block' style={{marginLeft:'10px'}} >Crear Plan</button>
+                      <Link className='btn btn-outline-primary' to={`/estrategias`}>Volver</Link>
+                      <button className='btn dark-bg btn-block ms-5'>Crear Estrategia</button>
                   </div>
               </form>
           </div>

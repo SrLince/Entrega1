@@ -54,70 +54,70 @@ export const data = {
     ],
     estrategias: [
         {
-            nombre: "Estrategia para el riesgo general del proyecto",
-            metodo: [
+            metodo: "Estrategia para el riesgo general del proyecto",
+            tipos: [
                 {
-                    nombre: "Aceptación"
+                    tipo: "Aceptación"
                 },
                 {
-                    nombre: "Mitigación"
+                    tipo: "Mitigación"
                 },
                 {
-                    nombre: "Transferencia"
+                    tipo: "Transferencia"
                 },
                 {
-                    nombre: "Explotación"
+                    tipo: "Explotación"
                 },
                 {
-                    nombre: "Evasión"
+                    tipo: "Evasión"
                 }
             ]
         },
         {
-            nombre: "Estrategia de respuesta a contingencias", 
-            metodo: [
+            metodo: "Estrategia de respuesta a contingencias", 
+            tipos: [
             {
-                nombre: "Directo"
+                tipo: "Directo"
             }
             ]
         },
         { 
-            nombre: "Estrategia para oportunidades", 
-            metodo: [
+            metodo: "Estrategia para oportunidades", 
+            tipos: [
             {
-                nombre: "Aceptación"
+                tipo: "Aceptación"
             },
             {
-                nombre: "Mitigación"
+                tipo: "Mitigación"
             },
             {
-                nombre: "Escalamiento"
+                tipo: "Escalamiento"
             },
             {
-                nombre: "Explotación"
+                tipo: "Explotación"
             },
             {
-                nombre: "Divulgación"
+                tipo: "Divulgación"
             }
             ]
         },
         {
-            nombre: "Estrategia para las amenazas",
-            metodo: [
+            metodo: "Estrategia para las amenazas",
+            tipos: [
             {
-                nombre: "Aceptación"
+                tipo: "Aceptación"
             },
             {
-                nombre: "Mitigación"
+                tipo: "Mitigación"
             },
             {
-                nombre: "Transferencia"
+                tipo: "Transferencia"
             },
             {
-                nombre: "Escalamiento"
+                tipo: "Escalamiento"
             },
             {
-                nombre: "Evasión"
+                tipo: "Evasión"
             }
             ]
         }
