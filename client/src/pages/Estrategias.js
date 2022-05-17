@@ -33,7 +33,7 @@ const Estrategias = () => {
                 <div className="container-fluid mb-4">
                     <div className="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
                         <h1>Estrategias</h1>
-                        <Link className="btn btn-primary" to={`/crearestrategia`} >Crear Estrategia</Link>
+                        <Link className="btn dark-bg" to={`/estrategias/crear`} >Crear Estrategia</Link>
                     </div>
                 </div>
             </nav>

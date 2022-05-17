@@ -10,7 +10,7 @@ const Footer = () => {
                     <figure>
                         <a href="#">
                             <Link>
-                                <img src='logo-uv.png' alt='...'></img>
+                                <img src='logo-uv.png'></img>
                             </Link>
                         </a>
                     </figure>
