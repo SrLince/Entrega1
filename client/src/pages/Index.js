@@ -10,7 +10,7 @@ const Home = () => {
             </div>
             <div className="container mt-8 mb-8">
                 <div className="text-center">
-                    <Link className='btn dark-bg' to={'/documentos'}><h2>Empezar</h2></Link>
+                    <Link id='btnEmpezar' className='btn dark-bg' to={'/documentos'}><h2>Empezar</h2></Link>
                     <p className='p-3'>A gestionar respuesta a los riesgos de tu proyecto</p>
                 </div>
             </div>
