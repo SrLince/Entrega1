@@ -7,6 +7,7 @@ import Navbar from './layouts/header/Navbar';
 import Footer from './layouts/footer/Footer';
 
 import Index from './pages/Index';
+import Login from './pages/Login';
 import Documentos from './pages/Documentos';
 import CrearDocumento from './pages/CrearDocumento';
 import ModificarDocumento from './pages/ModificarDocumento';
@@ -24,6 +25,7 @@ function App() {
           <Navbar />
           <Switch>
             <Route exact path='/' component={Index} />
+            <Route exact path='/login' component={Login} />
             <Route exact path='/documentos/' component={Documentos} />
             <Route exact path='/documentos/crear' component={CrearDocumento} />
             <Route exact path='/documentos/modificar/:id' component={ModificarDocumento} />
