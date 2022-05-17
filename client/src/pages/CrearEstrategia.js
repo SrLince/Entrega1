@@ -144,7 +144,7 @@ const CrearEstrategia = () => {
                   </div>
                   <div id="modal-body" class="modal-body"></div>
                   <div class="modal-footer">
-                      <button id="modal-button" type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                      <button id="modal-button" type="button" class="btn dark-bg" data-bs-dismiss="modal">Cerrar</button>
                   </div>
               </div>
           </div>

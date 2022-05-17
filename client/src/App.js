@@ -9,6 +9,7 @@ import Footer from './layouts/footer/Footer';
 import Index from './pages/Index';
 import Documentos from './pages/Documentos';
 import CrearDocumento from './pages/CrearDocumento';
+import ModificarDocumento from './pages/ModificarDocumento';
 import Estrategias from './pages/Estrategias';
 import CrearEstrategia from './pages/CrearEstrategia';
 
@@ -25,6 +26,7 @@ function App() {
             <Route exact path='/' component={Index} />
             <Route exact path='/documentos/' component={Documentos} />
             <Route exact path='/documentos/crear' component={CrearDocumento} />
+            <Route exact path='/documentos/modificar/:id' component={ModificarDocumento} />
             <Route exact path='/estrategias/' component={Estrategias} />
             <Route exact path='/estrategias/crear' component={CrearEstrategia} />
           </Switch>

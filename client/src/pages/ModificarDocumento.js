@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import Modal from 'bootstrap/js/dist/modal';
 import Axios from 'axios';
 import { Link } from 'react-router-dom';
 import { data } from '../services/constants/SelectOptions';
 
-const CrearDocumento = () => {
+const ModificarDocumento = () => {
+    const { id } = useParams();
     const [selectedCategory, setSelectedCategory] = React.useState();
     const [selectedType, setSelectedType] = React.useState();
     const availableType = data.documentos.find((c) => c.categoria === selectedCategory);
     var modalMessage = '';
     
     const [documento, setDocumento] = useState({
+      id: id,
       nombre: '',
       descripcion: '',
       categoria: '',
@@ -25,6 +28,16 @@ const CrearDocumento = () => {
       tipo,
       archivo
     } = documento;
+
+    useEffect(() => {
+        cargarDocumento()
+    }, []);
+
+    const cargarDocumento = async () => {
+        const result = await Axios.get(`http://localhost:3001/api/documentos/${id}`, documento);
+        setSelectedCategory(result.data[0].categoria);
+        setDocumento(result.data[0]);
+    };
 
     const onSelectChangeCategory = e => {
       setSelectedCategory(e.target.value);
@@ -56,15 +69,16 @@ const CrearDocumento = () => {
 
       const emptyField = Object.values(documento).some(value => {
         if (value === null || value === undefined || value === '') {
-          modalMessage = 'Debe completar todos los campos para registrar el documento.';
+          modalMessage = 'No puede dejar campos vacios al modificar el documento.';
           return true;
         }
         return false;
       });
 
       if(!emptyField) {
-        await Axios.post('http://localhost:3001/api/documentos/crear', documento);
-        modalMessage = "El documento ha sido ingresado correctamente en el sistema.";
+          console.log(documento);
+        await Axios.post(`http://localhost:3001/api/documentos/modificar/${id}`, documento);
+        modalMessage = "El documento ha sido modificado correctamente en el sistema.";
         document.getElementById("modal-button").onclick = function() { window.location.reload(); };
       }
 
@@ -77,7 +91,7 @@ const CrearDocumento = () => {
       <>
       <div className='container mt-5 mb-5'>
           <div className='w-75 mx-auto shadow p-5'>
-              <h2 className='text-center mb-4'>Crear Documento</h2>
+              <h2 className='text-center mb-4'>Modificar Documento</h2>
               <form onSubmit={e => onSubmit(e)}>
                   <div className='form-group'>
                       <label htmlFor='nombre'>Nombre</label>
@@ -98,7 +112,6 @@ const CrearDocumento = () => {
                         value={selectedCategory}
                         onChange={(e) => onSelectChangeCategory(e)}
                       >
-                        <option selected disabled value={''}>Seleccione categoría del documento</option>
                         {data.documentos.map((value, key) => {
                           return (
                             <option value={value.categoria} key={key}>
@@ -117,7 +130,6 @@ const CrearDocumento = () => {
                         value={selectedType}
                         onChange={(e) => onSelectChangeType(e)}
                       >
-                        <option selected disabled value={''}>Seleccione tipo del documento</option>
                         {availableType?.tipos.map((e, key) => {
                           return (
                             <option value={e.tipo} key={key}>
@@ -130,11 +142,11 @@ const CrearDocumento = () => {
                   <div className='form-group'>
                       <label htmlFor='Documento'>Documento del proyecto</label>
                       <input type='file' className='form-control form-control-lg'
-                      accept='.pdf' name='archivo' onChange={e => onFileChange(e)} />
+                      placeholder='Ingrese documento del proyecto' name='archivo' onChange={e => onFileChange(e)} />
                   </div> 
                   <div className='mb-5 mt-5 d-flex justify-content-end'>
                       <Link className='btn btn-outline-primary' to={`/documentos`}>Volver</Link>
-                      <button className='btn dark-bg btn-block ms-5'>Crear documento</button>
+                      <button className='btn dark-bg btn-block ms-5'>Modificar documento</button>
                   </div>
               </form>
           </div>
@@ -157,4 +169,4 @@ const CrearDocumento = () => {
     );
 };
 
-export default CrearDocumento;
+export default ModificarDocumento;
