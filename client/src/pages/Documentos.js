@@ -40,7 +40,7 @@ const Documentos = () => {
     },
     useGlobalFilter, useSortBy, usePagination)
 
-    const { globalFilter, pageIndex } = state
+    const { globalFilter, pageIndex } = state;
 
     return(
         <>
@@ -66,7 +66,14 @@ const Documentos = () => {
                         prepareRow(row)
                         return (
                             <tr {...row.getRowProps()}>
-                                {row.cells.map((cell) => {
+                                {row.cells.map((cell, key) => {
+                                    if(key === row.cells.length - 1) {
+                                        return (
+                                            <td>
+                                                <Link className='btn dark-bg' to={`/documentos/${row.cells[0].row.values.id}`}>Ver Documento</Link>
+                                            </td>
+                                        );
+                                    }
                                     return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
                                 })
                                 }

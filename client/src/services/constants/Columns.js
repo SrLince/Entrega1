@@ -20,6 +20,9 @@ export const COLUMNS = {
         {
             Header: 'Tipo',
             accessor: 'tipo'
+        },
+        {
+            Header: 'Acciones'
         }
     ],
     TMDocumentos: [

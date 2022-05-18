@@ -10,6 +10,7 @@ import Index from './pages/Index';
 import Login from './pages/Login';
 import Menu from './pages/Menu';
 import Documentos from './pages/Documentos';
+import VerDocumento from './pages/VerDocumento';
 import CrearDocumento from './pages/CrearDocumento';
 import ModificarDocumento from './pages/ModificarDocumento';
 import Estrategias from './pages/Estrategias';
@@ -29,6 +30,7 @@ function App() {
             <Route exact path='/login' component={Login} />
             <Route exact path='/menu' component={Menu} />
             <Route exact path='/documentos/' component={Documentos} />
+            <Route exact path='/documentos/:id' component={VerDocumento} />
             <Route exact path='/documentos/crear' component={CrearDocumento} />
             <Route exact path='/documentos/modificar/:id' component={ModificarDocumento} />
             <Route exact path='/estrategias/' component={Estrategias} />

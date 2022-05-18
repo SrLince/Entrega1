@@ -14,7 +14,7 @@ documentosController.verDocumentos = (req, res) => {
 
 documentosController.verDocumento = (req, res) => {
   const id = req.params.id;
-  let query = 'SELECT nombre, descripcion, categoria, tipo FROM documentos WHERE id = ' + id + ' AND estado = "Disponible";';
+  let query = 'SELECT nombre, descripcion, categoria, tipo, DATE_FORMAT(fecha, "%d-%m-%Y") AS fecha FROM documentos WHERE id = ' + id + ' AND estado = "Disponible";';
   mysqlConn.query(query, (err, sql) => {
       if(err) {
           res.json(err);
@@ -61,7 +61,7 @@ documentosController.modificarDocumento = (req, res) => {
     tipo: tipo
   }, (err, sql) => {
     if(err) {
-      console.log(err);
+      res.send(err);
     }
     res.send(sql);        
   });
