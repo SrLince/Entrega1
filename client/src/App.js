@@ -12,7 +12,7 @@ import Menu from './pages/Menu';
 import Documentos from './pages/Documentos';
 import VerDocumento from './pages/VerDocumento';
 import CrearDocumento from './pages/CrearDocumento';
-import ModificarDocumento from './pages/ModificarDocumento';
+import EditarDocumento from './pages/EditarDocumento';
 import Estrategias from './pages/Estrategias';
 import CrearEstrategia from './pages/CrearEstrategia';
 
@@ -41,7 +41,7 @@ function App() {
                 <Route exact path='/documentos/' component={Documentos} />
                 <Route exact path='/documentos/:id' component={VerDocumento} />
                 <Route exact path='/documentos/crear' component={CrearDocumento} />
-                <Route exact path='/documentos/modificar/:id' component={ModificarDocumento} />
+                <Route exact path='/documentos/editar/:id' component={EditarDocumento} />
                 <Route exact path='/estrategias/' component={Estrategias} />
                 <Route exact path='/estrategias/crear' component={CrearEstrategia} />
               </>
@@ -51,7 +51,7 @@ function App() {
                 <Route exact path='/documentos/' component={Login} />
                 <Route exact path='/documentos/:id' component={Login} />
                 <Route exact path='/documentos/crear' component={Login} />
-                <Route exact path='/documentos/modificar/:id' component={Login} />
+                <Route exact path='/documentos/editar/:id' component={Login} />
                 <Route exact path='/estrategias/' component={Login} />
                 <Route exact path='/estrategias/crear' component={Login} />
               </>

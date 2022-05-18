@@ -48,7 +48,7 @@ documentosController.crearDocumentos = (req, res) => {
   });
 };
 
-documentosController.modificarDocumento = (req, res) => {
+documentosController.editarDocumento = (req, res) => {
   const id = req.params.id;
   const {nombre, descripcion, categoria, tipo} = req.body;
 

@@ -9,6 +9,7 @@ import GlobalFilter from '../layouts/main/GlobalFilter';
 const Documentos = () => {
     const columns = useMemo(() => COLUMNS.JPDocumentos, []);
     const [data, setDocumentos] = useState([]);
+    const [ isJP , setIsJP ] = useState(false);
 
     const cargarDocumentos = async () => {
         const response = await Axios.get("http://localhost:3001/api/documentos/");
@@ -16,6 +17,7 @@ const Documentos = () => {
     };
 
     useEffect(() => {
+        setIsJP(localStorage.getItem('user') == 'jp');
         cargarDocumentos();
     }, []);
 
@@ -69,9 +71,21 @@ const Documentos = () => {
                                 {row.cells.map((cell, key) => {
                                     if(key === row.cells.length - 1) {
                                         return (
-                                            <td>
-                                                <Link className='btn dark-bg' to={`/documentos/${row.cells[0].row.values.id}`}>Ver Documento</Link>
-                                            </td>
+                                            isJP ?
+                                            <>
+                                                <td>
+                                                    <Link className='btn dark-bg' style={{width: "70%"}} to={`/documentos/${row.cells[0].row.values.id}`}>Ver</Link>
+                                                </td>
+                                            </>
+                                            :
+                                            <>
+                                                <td>
+                                                    <Link className='btn dark-bg' style={{width: "26%"}} to={`/documentos/${row.cells[0].row.values.id}`}>Ver</Link>
+                                                    <Link className='btn dark-bg ms-3' style={{width: "26%"}} to={`/documentos/editar/${row.cells[0].row.values.id}`}>Editar</Link>
+                                                    <Link className='btn dark-bg ms-3' style={{width: "26%"}}>Borrar</Link>
+                                                </td>
+                                            </>
+                                            
                                         );
                                     }
                                     return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>

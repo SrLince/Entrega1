@@ -5,7 +5,7 @@ import Axios from 'axios';
 import { Link } from 'react-router-dom';
 import { data } from '../services/constants/SelectOptions';
 
-const ModificarDocumento = () => {
+const EditarDocumento = () => {
     const { id } = useParams();
     const [selectedCategory, setSelectedCategory] = React.useState();
     const [selectedType, setSelectedType] = React.useState();
@@ -69,7 +69,7 @@ const ModificarDocumento = () => {
 
       const emptyField = Object.values(documento).some(value => {
         if (value === null || value === undefined || value === '') {
-          modalMessage = 'No puede dejar campos vacios al modificar el documento.';
+          modalMessage = 'No puede dejar campos vacios al editar el documento.';
           return true;
         }
         return false;
@@ -77,7 +77,7 @@ const ModificarDocumento = () => {
 
       if(!emptyField) {
           console.log(documento);
-        await Axios.post(`http://localhost:3001/api/documentos/modificar/${id}`, documento);
+        await Axios.post(`http://localhost:3001/api/documentos/editar/${id}`, documento);
         modalMessage = "El documento ha sido modificado correctamente en el sistema.";
         document.getElementById("modal-button").onclick = function() { window.location.reload(); };
       }
@@ -91,7 +91,7 @@ const ModificarDocumento = () => {
       <>
       <div className='container mt-5 mb-5'>
           <div className='w-75 mx-auto shadow p-5'>
-              <h2 className='text-center mb-4'>Modificar Documento</h2>
+              <h2 className='text-center mb-4'>Editar Documento</h2>
               <form onSubmit={e => onSubmit(e)}>
                   <div className='form-group'>
                       <label htmlFor='nombre'>Nombre</label>
@@ -146,7 +146,7 @@ const ModificarDocumento = () => {
                   </div> 
                   <div className='mb-5 mt-5 d-flex justify-content-end'>
                       <Link className='btn btn-outline-primary' to={`/documentos`}>Volver</Link>
-                      <button className='btn dark-bg btn-block ms-5'>Modificar documento</button>
+                      <button className='btn dark-bg btn-block ms-5'>Editar documento</button>
                   </div>
               </form>
           </div>
@@ -169,4 +169,4 @@ const ModificarDocumento = () => {
     );
 };
 
-export default ModificarDocumento;
+export default EditarDocumento;
