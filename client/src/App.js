@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -19,6 +19,12 @@ import CrearEstrategia from './pages/CrearEstrategia';
 import ScrollToTop from './services/actions/ScrollToTop';
 
 function App() {
+  const [ isLogged , setIsLogged ] = useState(false);
+
+  useEffect(() => { 
+    setIsLogged(localStorage.getItem('user') != undefined);
+  }, []);
+
   return (
     <Router>
       <>
@@ -28,13 +34,28 @@ function App() {
           <Switch>
             <Route exact path='/' component={Index} />
             <Route exact path='/login' component={Login} />
-            <Route exact path='/menu' component={Menu} />
-            <Route exact path='/documentos/' component={Documentos} />
-            <Route exact path='/documentos/:id' component={VerDocumento} />
-            <Route exact path='/documentos/crear' component={CrearDocumento} />
-            <Route exact path='/documentos/modificar/:id' component={ModificarDocumento} />
-            <Route exact path='/estrategias/' component={Estrategias} />
-            <Route exact path='/estrategias/crear' component={CrearEstrategia} />
+            {
+              isLogged ? 
+              <>
+                <Route exact path='/menu' component={Menu} />
+                <Route exact path='/documentos/' component={Documentos} />
+                <Route exact path='/documentos/:id' component={VerDocumento} />
+                <Route exact path='/documentos/crear' component={CrearDocumento} />
+                <Route exact path='/documentos/modificar/:id' component={ModificarDocumento} />
+                <Route exact path='/estrategias/' component={Estrategias} />
+                <Route exact path='/estrategias/crear' component={CrearEstrategia} />
+              </>
+              :
+              <>
+                <Route exact path='/menu' component={Login} />
+                <Route exact path='/documentos/' component={Login} />
+                <Route exact path='/documentos/:id' component={Login} />
+                <Route exact path='/documentos/crear' component={Login} />
+                <Route exact path='/documentos/modificar/:id' component={Login} />
+                <Route exact path='/estrategias/' component={Login} />
+                <Route exact path='/estrategias/crear' component={Login} />
+              </>
+            }  
           </Switch>
           <Footer/>
         </div>

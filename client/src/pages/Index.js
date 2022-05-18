@@ -1,7 +1,14 @@
+import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import '../assets/styles/index.css';
 
-const Home = () => {
+const Index = () => {
+    const [ isLogged , setIsLogged ] = useState(false);
+
+    useEffect(() => { 
+        setIsLogged(localStorage.getItem('user') != undefined);
+    }, [])
+
     return(
         <div>
             <div className="cover d-flex justify-content-center align-items-center flex-column">
@@ -10,7 +17,13 @@ const Home = () => {
             </div>
             <div className="container mt-8 mb-8">
                 <div className="text-center">
-                    <Link id='btnEmpezar' className='btn dark-bg' to={'/login'}><h2>Empezar</h2></Link>
+                    {
+                        isLogged ?
+                            <Link id='btnEmpezar' className='btn dark-bg' to={'/menu'}><h2>Empezar</h2></Link>
+                        :
+                            <Link id='btnEmpezar' className='btn dark-bg' to={'/login'}><h2>Empezar</h2></Link>
+                    }
+                    
                     <p className='p-3'>A gestionar respuesta a los riesgos de tu proyecto</p>
                 </div>
             </div>
@@ -18,4 +31,4 @@ const Home = () => {
       );
 };
 
-export default Home;
+export default Index;
