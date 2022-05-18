@@ -12,8 +12,8 @@ const Login = () => {
       <div className='w-75 mx-auto shadow p-5'>
         <h2 className='text-center mb-4'>Ingreso</h2>
         <div className='container mt-8 mb-8 d-flex flex-column align-items-center'>
-          <Link className='btn dark-bg mb-5 p-3' style={{width: "60%"}} to={'/menu'} onClick={() => loginAs('jp')}>Jefe de Proyecto</Link>
-          <Link className='btn dark-bg p-3' style={{width: "60%"}} to={'/menu'} onClick={() => loginAs('tm')}>Miembro de Equipo</Link>
+          <a className='btn dark-bg mb-5 p-3' style={{width: "60%"}} href="/menu" onClick={() => loginAs('jp')}>Jefe de Proyecto</a>
+          <a className='btn dark-bg p-3' style={{width: "60%"}} href="/menu" onClick={() => loginAs('tm')}>Miembro de Equipo</a>
         </div>
       </div>
     </div>

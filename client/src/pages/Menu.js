@@ -32,7 +32,7 @@ const Menu = () => {
           
         </div>
         <div className='d-flex flex-row justify-content-end'>
-          <Link className='btn dark-bg' onClick={() => closeSession()} to={`/login`}>Cerrar Sesión</Link>
+          <a className='btn dark-bg' onClick={() => closeSession()} href="/">Cerrar Sesión</a>
         </div>
       </div>
     </div>
