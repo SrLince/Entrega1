@@ -65,6 +65,18 @@ documentosController.editarDocumento = (req, res) => {
     }
     res.send(sql);        
   });
+};
+
+documentosController.eliminarDocumento = (req, res) => {
+  const id = req.params.id;
+  var query = 'UPDATE `documentos` SET estado = "No Disponible" WHERE id = ' + id;
+
+  mysqlConn.query(query, (err, sql) => {
+    if(err) {
+      res.send(err);
+    }
+    res.send(sql);        
+  });
 }
 
 module.exports = documentosController;

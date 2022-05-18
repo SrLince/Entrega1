@@ -4,7 +4,9 @@ const documentosController = require('../controllers/documentosController');
 
 router.get('/', documentosController.verDocumentos);
 router.get('/:id', documentosController.verDocumento);
+
 router.post('/crear', documentosController.crearDocumentos);
 router.post('/editar/:id', documentosController.editarDocumento);
+router.post('/eliminar/:id', documentosController.eliminarDocumento);
 
 module.exports = router;

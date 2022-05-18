@@ -39,7 +39,7 @@ function App() {
               <>
                 <Route exact path='/menu' component={Menu} />
                 <Route exact path='/documentos/' component={Documentos} />
-                <Route exact path='/documentos/:id' component={VerDocumento} />
+                <Route exact path='/documentos/ver/:id' component={VerDocumento} />
                 <Route exact path='/documentos/crear' component={CrearDocumento} />
                 <Route exact path='/documentos/editar/:id' component={EditarDocumento} />
                 <Route exact path='/estrategias/' component={Estrategias} />
@@ -49,7 +49,7 @@ function App() {
               <>
                 <Route exact path='/menu' component={Login} />
                 <Route exact path='/documentos/' component={Login} />
-                <Route exact path='/documentos/:id' component={Login} />
+                <Route exact path='/documentos/ver/:id' component={Login} />
                 <Route exact path='/documentos/crear' component={Login} />
                 <Route exact path='/documentos/editar/:id' component={Login} />
                 <Route exact path='/estrategias/' component={Login} />

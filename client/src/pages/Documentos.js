@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { useTable, useSortBy, useGlobalFilter, usePagination } from 'react-table';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
+import Modal from 'bootstrap/js/dist/modal';
 
 import { COLUMNS } from '../services/constants/Columns';
 import GlobalFilter from '../layouts/main/GlobalFilter';
@@ -10,11 +11,25 @@ const Documentos = () => {
     const columns = useMemo(() => COLUMNS.JPDocumentos, []);
     const [data, setDocumentos] = useState([]);
     const [ isJP , setIsJP ] = useState(false);
+    const [ selectedId , setSelectedId ] = useState(false);
 
     const cargarDocumentos = async () => {
         const response = await Axios.get("http://localhost:3001/api/documentos/");
         setDocumentos(response.data);
     };
+
+    function setDeleteId(documentId) {
+        setSelectedId(documentId);
+        const myModal = new Modal(document.getElementById("modal-1"));
+        myModal.show();
+    }
+
+    const deleteDocument = async () => {
+        console.log(selectedId);
+        Axios.post(`http://localhost:3001/api/documentos/eliminar/${selectedId}`)
+        const myModal = new Modal(document.getElementById("modal-2"));
+        myModal.show();
+    }
 
     useEffect(() => {
         setIsJP(localStorage.getItem('user') == 'jp');
@@ -74,15 +89,15 @@ const Documentos = () => {
                                             isJP ?
                                             <>
                                                 <td>
-                                                    <Link className='btn dark-bg' style={{width: "70%"}} to={`/documentos/${row.cells[0].row.values.id}`}>Ver</Link>
+                                                    <Link className='btn dark-bg' style={{width: "70%"}} to={`/documentos/ver/${row.cells[0].row.values.id}`}>Ver</Link>
                                                 </td>
                                             </>
                                             :
                                             <>
                                                 <td>
-                                                    <Link className='btn dark-bg' style={{width: "26%"}} to={`/documentos/${row.cells[0].row.values.id}`}>Ver</Link>
+                                                    <Link className='btn dark-bg' style={{width: "26%"}} to={`/documentos/ver/${row.cells[0].row.values.id}`}>Ver</Link>
                                                     <Link className='btn dark-bg ms-3' style={{width: "26%"}} to={`/documentos/editar/${row.cells[0].row.values.id}`}>Editar</Link>
-                                                    <Link className='btn dark-bg ms-3' style={{width: "26%"}}>Borrar</Link>
+                                                    <Link className='btn dark-bg ms-3' style={{width: "26%"}} onClick={() => setDeleteId(row.cells[0].row.values.id)}>Borrar</Link>
                                                 </td>
                                             </>
                                             
@@ -114,6 +129,39 @@ const Documentos = () => {
               </div>
             </div>
           </div>
+
+          <div class="modal fade" id="modal-1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modalLabel">Mensaje</h5>
+                </div>
+                <div id="modal-body" class="modal-body">
+                    Esta seguro que desea eliminar este documento?
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancelar</button>
+                  <button id="modal-button-1" type="button" class="btn dark-bg" data-bs-dismiss="modal" onClick={() => deleteDocument()}>Confirmar</button>
+                </div>
+              </div>
+            </div>
+         </div>
+
+         <div class="modal fade" id="modal-2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modalLabel">Mensaje</h5>
+                </div>
+                <div id="modal-body" class="modal-body">
+                    El documento ha sido eliminado correctamente
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn dark-bg" data-bs-dismiss="modal" onClick={() => window.location.reload()}>Aceptar</button>
+                </div>
+              </div>
+            </div>
+         </div>
         </>
     );
 };
