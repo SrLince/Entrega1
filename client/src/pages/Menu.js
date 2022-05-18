@@ -15,7 +15,14 @@ const Menu = () => {
   return (
     <div className='container mt-5 mb-5'>
       <div className='w-75 mx-auto shadow p-5'>
-        <h2 className='text-center mb-4'>Bienvenido</h2>
+        <h1 className='text-center'>Bienvenido</h1>
+        {
+          isJP ? 
+            <h1 className='text-center'>Jefe de Proyecto</h1>
+          :
+            <h1 className='text-center'>Miembro del Proyecto</h1>
+        }
+        
         <div className='container mt-8 mb-8 d-flex flex-column align-items-center'>
           {isJP ? 
             <>

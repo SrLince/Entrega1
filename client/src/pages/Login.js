@@ -10,7 +10,7 @@ const Login = () => {
   return (
     <div className='container mt-5 mb-5'>
       <div className='w-75 mx-auto shadow p-5'>
-        <h2 className='text-center mb-4'>Ingreso</h2>
+        <h1 className='text-center'>Ingreso</h1>
         <div className='container mt-8 mb-8 d-flex flex-column align-items-center'>
           <a className='btn dark-bg mb-5 p-3' style={{width: "60%"}} href="/menu" onClick={() => loginAs('jp')}>Jefe de Proyecto</a>
           <a className='btn dark-bg p-3' style={{width: "60%"}} href="/menu" onClick={() => loginAs('tm')}>Miembro de Equipo</a>
