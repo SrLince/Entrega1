@@ -41,7 +41,7 @@ const Estrategias = () => {
                     </div>
                 </div>
             </nav>
-            <div className='p-4' style={{backgroundColor: "#ddd"}}>
+            <div className='p-4 mb-5' style={{backgroundColor: "#ddd"}}>
                 <div className='d-flex justify-content-around m-2 pt-2 pb-2' style={{flexWrap: "wrap"}}>{estrategias.map((renderCard))}</div>
             </div>
         </div>
