@@ -16,7 +16,9 @@ import EditarDocumento from './pages/EditarDocumento';
 import Estrategias from './pages/Estrategias';
 import VerEstrategia from './pages/VerEstrategia';
 import CrearEstrategia from './pages/CrearEstrategia';
+import EditarEstrategia from './pages/EditarEstrategia';
 import SolicitudesDocumentos from './pages/SolicitudesDocumentos';
+import SolicitudesEstrategias from './pages/SolicitudesEstrategias';
 
 import ScrollToTop from './services/actions/ScrollToTop';
 
@@ -47,7 +49,9 @@ function App() {
                 <Route exact path='/estrategias/' component={Estrategias} />
                 <Route exact path='/estrategias/ver/:id' component={VerEstrategia} />
                 <Route exact path='/estrategias/crear' component={CrearEstrategia} />
+                <Route exact path='/estrategias/editar/:id' component={EditarEstrategia} />
                 <Route exact path='/solicitudes/documentos' component={SolicitudesDocumentos} />
+                <Route exact path='/solicitudes/estrategias' component={SolicitudesEstrategias} />
               </>
               :
               <>
