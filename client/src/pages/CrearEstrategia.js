@@ -121,7 +121,7 @@ const CrearEstrategia = () => {
                   <div className='form-group'>
                       <label htmlFor='condiciones'>Condiciones de activación</label>
                       <textarea type='text' className='form-control form-control-lg'
-                      placeholder='Ingrese condiciones de activación' name='condiciones' value={descripcion} onChange={e => onInputChange(e)} />
+                      placeholder='Ingrese condiciones de activación' name='condiciones' value={condicion} onChange={e => onInputChange(e)} />
                   </div>
                   <div className='form-group'>
                       <label htmlFor='descripcion'>Descripción</label>

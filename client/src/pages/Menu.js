@@ -28,14 +28,14 @@ const Menu = () => {
             <>
               <Link className='btn dark-bg mb-5 p-3' style={{width: "60%"}} to={`/documentos`}>Ver Documentos</Link>
               <Link className='btn dark-bg mb-5 p-3' style={{width: "60%"}} to={`/estrategias`}>Ver Estrategias</Link>
-              <Link className='btn dark-bg mb-5 p-3' style={{width: "60%"}} to={`/solicitudes/documentos`}>Gestionar Solcitudes Documentos</Link>
-              <Link className='btn dark-bg p-3' style={{width: "60%"}} to={`/solicitudes/estrategias`}>Gestionar Solcitudes Estrategias</Link>
+              <Link className='btn dark-bg mb-5 p-3' style={{width: "60%"}} to={`/solicitudes/documentos`}>Gestionar Solicitudes Documentos</Link>
+              <Link className='btn dark-bg p-3' style={{width: "60%"}} to={`/solicitudes/estrategias`}>Gestionar Solicitudes Estrategias</Link>
             </> :
             <>
               <Link className='btn dark-bg mb-5 p-3' style={{width: "60%"}} to={`/documentos`}>Gestionar Documentos</Link>
               <Link className='btn dark-bg mb-5 p-3' style={{width: "60%"}} to={`/estrategias`}>Gestionar Estrategias</Link>
-              <Link className='btn dark-bg mb-5 p-3' style={{width: "60%"}} to={`/solicitudes/documentos`}>Ver Solcitudes Documentos</Link>
-              <Link className='btn dark-bg p-3' style={{width: "60%"}} to={`/solicitudes/estrategias`}>Ver Solcitudes Estrategias</Link>
+              <Link className='btn dark-bg mb-5 p-3' style={{width: "60%"}} to={`/solicitudes/documentos`}>Ver Solicitudes Documentos</Link>
+              <Link className='btn dark-bg p-3' style={{width: "60%"}} to={`/solicitudes/estrategias`}>Ver Solicitudes Estrategias</Link>
             </>
           }
           

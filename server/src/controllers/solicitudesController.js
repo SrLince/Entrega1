@@ -22,4 +22,16 @@ solicitudesController.verEstrategias = (req, res) => {
     });
 };
 
+solicitudesController.eliminarDocumento = (req, res) => {
+  const id = req.params.id;
+  let query = 'DELETE FROM solicitudes_doc WHERE id = ' +  id;
+
+  mysqlConn.query(query, (err, sql) => {
+    if(err) {
+      res.json(err);
+    }
+    res.send(sql);
+  });
+};
+
 module.exports = solicitudesController;
