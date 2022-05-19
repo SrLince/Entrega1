@@ -23,7 +23,15 @@ documentosController.verDocumento = (req, res) => {
   });
 };
 
-documentosController.crearDocumentos = (req, res) => {
+documentosController.verSolicitudes = (req, res) => {
+
+};
+
+documentosController.verSolicitud = (req, res) => {
+  const id = req.params.id;
+};
+
+documentosController.crearDocumento = (req, res) => {
   const {nombre, descripcion, categoria, tipo, archivo} = req.body;
 
   let query = 'INSERT INTO documentos SET ?';
@@ -35,17 +43,9 @@ documentosController.crearDocumentos = (req, res) => {
   }, (err, sql) => {
     if (err) {
       res.json(err);
-    } else {
-      var fs = require('fs');
-      fs.writeFile("../public/documentos/", archivo, function (err) {
-        if (err) {
-          console.log('File not saved');
-        }
-        console.log("The file was saved!");
-      });
-      res.send(sql);
-    }
-  });
+    } 
+    res.send(sql);
+    });
 };
 
 documentosController.editarDocumento = (req, res) => {

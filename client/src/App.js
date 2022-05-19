@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 
 import Navbar from './layouts/header/Navbar';
 import Footer from './layouts/footer/Footer';
@@ -15,6 +15,7 @@ import CrearDocumento from './pages/CrearDocumento';
 import EditarDocumento from './pages/EditarDocumento';
 import Estrategias from './pages/Estrategias';
 import CrearEstrategia from './pages/CrearEstrategia';
+import SolicitudesDocumentos from './pages/SolicitudesDocumentos';
 
 import ScrollToTop from './services/actions/ScrollToTop';
 
@@ -44,16 +45,11 @@ function App() {
                 <Route exact path='/documentos/editar/:id' component={EditarDocumento} />
                 <Route exact path='/estrategias/' component={Estrategias} />
                 <Route exact path='/estrategias/crear' component={CrearEstrategia} />
+                <Route exact path='/solicitudes/documentos' component={SolicitudesDocumentos} />
               </>
               :
               <>
-                <Route exact path='/menu' component={Login} />
-                <Route exact path='/documentos/' component={Login} />
-                <Route exact path='/documentos/ver/:id' component={Login} />
-                <Route exact path='/documentos/crear' component={Login} />
-                <Route exact path='/documentos/editar/:id' component={Login} />
-                <Route exact path='/estrategias/' component={Login} />
-                <Route exact path='/estrategias/crear' component={Login} />
+                <Route path='*' component={Login}/>
               </>
             }  
           </Switch>

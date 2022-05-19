@@ -12,6 +12,14 @@ estrategiasController.verEstrategias = (req, res) => {
   });
 };
 
+estrategiasController.verSolicitudes = (req, res) => {
+
+};
+
+estrategiasController.verSolicitud = (req, res) => {
+  const id = req.params.id;
+};
+
 estrategiasController.crearEstrategias = (req, res) => {
   const {nombre, descripcion, metodo, tipo, condicion} = req.body;
 

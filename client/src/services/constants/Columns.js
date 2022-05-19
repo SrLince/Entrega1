@@ -1,5 +1,5 @@
 export const COLUMNS = {
-    JPDocumentos: [
+    Documentos: [
         {
             Header: 'ID',
             accessor: 'id'
@@ -25,26 +25,26 @@ export const COLUMNS = {
             Header: 'Acciones'
         }
     ],
-    TMDocumentos: [
+    Solicitudes: [
         {
             Header: 'ID',
             accessor: 'id'
         },
         {
-            Header: 'Nombre Documento',
+            Header: 'Fecha Ingreso',
             accessor: 'nombre'
         },
         {
-            Header: 'Fecha de Última Edición',
+            Header: 'Fecha Respuesta',
             accessor: 'fecha'
         },
         {
-            Header: 'Descripción',
+            Header: 'Estado',
             accessor: 'descripcion'
         }
         ,
         {
-            Header: 'Tipo',
+            Header: 'Descripción',
             accessor: 'tipo'
         },
         {

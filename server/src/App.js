@@ -16,6 +16,7 @@ app.use(express.json());
 // Routes
 app.use('/api/documentos', require('./routes/documentos'));
 app.use('/api/estrategias', require('./routes/estrategias'));
+app.use('/api/solicitudes', require('./routes/solicitudes'));
 
 // Server
 app.listen(app.get('port'), () => {

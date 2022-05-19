@@ -7,8 +7,8 @@ import Modal from 'bootstrap/js/dist/modal';
 import { COLUMNS } from '../services/constants/Columns';
 import GlobalFilter from '../layouts/main/GlobalFilter';
 
-const Documentos = () => {
-    const columns = useMemo(() => COLUMNS.Documentos, []);
+const SolicitudesDocumentos = () => {
+    const columns = useMemo(() => COLUMNS.Solicitudes, []);
     const [data, setDocumentos] = useState([]);
     const [ isJP , setIsJP ] = useState(false);
     const [ selectedId , setSelectedId ] = useState(false);
@@ -64,7 +64,7 @@ const Documentos = () => {
             <nav className="navbar navbar-expand-lg navbar-light">
                 <div className="container-fluid mb-4">
                     <div className="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
-                        <h1>Documentos</h1>
+                        <h1>Solicitudes Documentos</h1>
                         <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
                     </div>
                 </div>
@@ -95,14 +95,16 @@ const Documentos = () => {
                                             isJP ?
                                             <>
                                                 <td>
-                                                    <Link className='btn dark-bg' style={{width: "70%"}} to={`/documentos/ver/${row.cells[0].row.values.id}`}>Ver</Link>
+                                                    <Link className='btn dark-bg' style={{width: "26%"}} to={`solicitudes/ver/${row.cells[0].row.values.id}`}>Ver</Link>
+                                                    <Link className='btn dark-bg ms-3' style={{width: "26%"}} >Aceptar</Link>
+                                                    <Link className='btn dark-bg ms-3' style={{width: "26%"}} >Rechazar</Link>
                                                 </td>
                                             </>
                                             :
                                             <>
                                                 <td>
-                                                    <Link className='btn dark-bg' style={{width: "26%"}} to={`/documentos/ver/${row.cells[0].row.values.id}`}>Ver</Link>
-                                                    <Link className='btn dark-bg ms-3' style={{width: "26%"}} to={`/documentos/editar/${row.cells[0].row.values.id}`}>Editar</Link>
+                                                    <Link className='btn dark-bg' style={{width: "26%"}} to={`/solicitudes/ver/${row.cells[0].row.values.id}`}>Ver</Link>
+                                                    <Link className='btn dark-bg ms-3' style={{width: "26%"}} to={`/solicitudes/editar/${row.cells[0].row.values.id}`}>Editar</Link>
                                                     <Link className='btn dark-bg ms-3' style={{width: "26%"}} onClick={() => setDeleteId(row.cells[0].row.values.id)}>Borrar</Link>
                                                 </td>
                                             </>
@@ -172,4 +174,4 @@ const Documentos = () => {
     );
 };
 
-export default Documentos;
+export default SolicitudesDocumentos;

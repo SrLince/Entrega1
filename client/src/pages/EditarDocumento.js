@@ -79,7 +79,7 @@ const EditarDocumento = () => {
         console.log(documento);
         await Axios.post(`http://localhost:3001/api/documentos/editar/${id}`, documento);
         modalMessage = "El documento ha sido modificado correctamente en el sistema.";
-        document.getElementById("modal-button").onclick = function() { window.location.reload(); };
+        document.getElementById("modal-button").onclick = function() { window.location.href = "/documentos" };
       }
 
       document.getElementById("modal-body").innerHTML = modalMessage;
