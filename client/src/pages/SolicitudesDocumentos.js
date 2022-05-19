@@ -31,7 +31,7 @@ const SolicitudesDocumentos = () => {
   }
 
   useEffect(() => {
-    setIsJP(localStorage.getItem('user') == 'jp');
+    setIsJP(localStorage.getItem('user') === 'jp');
     cargarDocumentos();
   }, []);
 
