@@ -14,7 +14,7 @@ const SolicitudesDocumentos = () => {
     const [ selectedId , setSelectedId ] = useState(false);
 
     const cargarDocumentos = async () => {
-        const response = await Axios.get("http://localhost:3001/api/documentos/");
+        const response = await Axios.get("http://localhost:3001/api/solicitudes/documentos/");
         setDocumentos(response.data);
     };
 

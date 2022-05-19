@@ -32,20 +32,20 @@ export const COLUMNS = {
         },
         {
             Header: 'Fecha Ingreso',
-            accessor: 'nombre'
+            accessor: 'fecha_in'
         },
         {
             Header: 'Fecha Respuesta',
-            accessor: 'fecha'
+            accessor: 'fecha_res'
         },
         {
             Header: 'Estado',
-            accessor: 'descripcion'
+            accessor: 'estado'
         }
         ,
         {
             Header: 'Descripción',
-            accessor: 'tipo'
+            accessor: 'descripcion'
         },
         {
             Header: 'Acciones'
