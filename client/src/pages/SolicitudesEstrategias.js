@@ -7,32 +7,32 @@ import Modal from 'bootstrap/js/dist/modal';
 import { COLUMNS } from '../services/constants/Columns';
 import GlobalFilter from '../layouts/main/GlobalFilter';
 
-const SolicitudesDocumentos = () => {
+const SolicitudesEstrategias = () => {
   const columns = useMemo(() => COLUMNS.Solicitudes, []);
-  const [ data, setDocumentos ] = useState([]);
+  const [ data, setEstrategias ] = useState([]);
   const [ isJP , setIsJP ] = useState(false);
   const [ selectedId , setSelectedId ] = useState(false);
 
-  const cargarDocumentos = async () => {
-    const response = await Axios.get("http://localhost:3001/api/solicitudes/documentos/");
-    setDocumentos(response.data);
+  const cargarEstrategias = async () => {
+    const response = await Axios.get("http://localhost:3001/api/solicitudes/estrategias/");
+    setEstrategias(response.data);
   };
 
-  function setDeleteId(documentId) {
-    setSelectedId(documentId);
+  function setDeleteId(strategyId) {
+    setSelectedId(strategyId);
     const myModal = new Modal(document.getElementById("modal-1"));
     myModal.show();
   };
 
   const deleteDocument = async () => {
-    Axios.delete(`http://localhost:3001/api/solicitudes/eliminar/documento/${selectedId}`);
+    Axios.delete(`http://localhost:3001/api/solicitudes/eliminar/estrategia/${selectedId}`)
     const myModal = new Modal(document.getElementById("modal-2"));
     myModal.show();
   };
 
   useEffect(() => {
     setIsJP(localStorage.getItem('user') === 'jp');
-    cargarDocumentos();
+    cargarEstrategias();
   }, []);
 
   const { 
@@ -64,7 +64,7 @@ const SolicitudesDocumentos = () => {
         <nav className="navbar navbar-expand-lg navbar-light">
           <div className="container-fluid mb-4">
             <div className="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
-              <h1>Solicitudes Documentos</h1>
+              <h1>Solicitudes Estrategias</h1>
               <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
             </div>
           </div>
@@ -168,4 +168,4 @@ const SolicitudesDocumentos = () => {
   );
 };
 
-export default SolicitudesDocumentos;
+export default SolicitudesEstrategias;

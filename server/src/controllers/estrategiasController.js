@@ -3,7 +3,7 @@ const { mysql } = require('../config/database');
 const estrategiasController = {};
 
 estrategiasController.verEstrategias = (req, res) => {
-  let query = 'SELECT nombre, tipo, condicion FROM estrategias WHERE estado = "Disponible";';
+  let query = 'SELECT id, nombre, tipo, condicion FROM estrategias WHERE estado = "Disponible";';
   mysqlConn.query(query, (err, sql) => {
     if(err) {
       res.json(err);

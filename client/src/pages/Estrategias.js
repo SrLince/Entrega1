@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 
 const Estrategias = () => {
-
     const [estrategias, setEstrategias] = useState([]);
 
     const cargarEstrategias = async () => {
@@ -17,11 +16,16 @@ const Estrategias = () => {
 
     const renderCard = (card, index) => {
         return (
-            <div className='card m-2' style={{width: "17rem", flex: "0 1 23.5%"}} key={card.id}>
-                <div class="card-body">
-                    <h5 class="card-title">{card.estrategia}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">{card.metodo}</h6>
-                    <p class="card-text">{card.descripcion}</p>
+            <div className='col-md-4 mb-4' style={{width: "31%"}}>
+                <div className='card text-center'>
+                    <div className='card-body text-dark p-4'>
+                        <h4 className='card-title'>{card.nombre}</h4>
+                        <h6 className='card-title'>{card.tipo}</h6>
+                        <p className='card-text text-secondary p-5'>
+                            {`${card.condicion}`}
+                        </p>
+                        <Link className='btn dark-bg mb-2' to={`/estrategias/ver/${card.id}`}>Ver Detalles</Link>
+                    </div>
                 </div>
             </div>
         );
@@ -37,8 +41,8 @@ const Estrategias = () => {
                     </div>
                 </div>
             </nav>
-            <div className='' style={{backgroundColor: "#ddd"}}>
-                <div className='d-flex m-2 pt-2 pb-2' style={{flexWrap: "wrap"}}>{estrategias.map((renderCard))}</div>
+            <div className='p-4' style={{backgroundColor: "#ddd"}}>
+                <div className='d-flex justify-content-around m-2 pt-2 pb-2' style={{flexWrap: "wrap"}}>{estrategias.map((renderCard))}</div>
             </div>
         </div>
     );

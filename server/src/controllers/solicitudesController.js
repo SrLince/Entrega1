@@ -13,7 +13,7 @@ solicitudesController.verDocumentos = (req, res) => {
 };
 
 solicitudesController.verEstrategias = (req, res) => {
-    let query = '';
+  let query = 'SELECT id, DATE_FORMAT(fecha_in, "%d-%m-%Y") AS fecha_in, DATE_FORMAT(fecha_res, "%d-%m-%Y") AS fecha_res, estado, descripcion FROM solicitudes_est;';
     mysqlConn.query(query, (err, sql) => {
       if(err) {
         res.json(err);
@@ -25,6 +25,18 @@ solicitudesController.verEstrategias = (req, res) => {
 solicitudesController.eliminarDocumento = (req, res) => {
   const id = req.params.id;
   let query = 'DELETE FROM solicitudes_doc WHERE id = ' +  id;
+
+  mysqlConn.query(query, (err, sql) => {
+    if(err) {
+      res.json(err);
+    }
+    res.send(sql);
+  });
+};
+
+solicitudesController.eliminarEstrategia = (req, res) => {
+  const id = req.params.id;
+  let query = 'DELETE FROM solicitudes_est WHERE id = ' +  id;
 
   mysqlConn.query(query, (err, sql) => {
     if(err) {

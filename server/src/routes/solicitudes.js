@@ -5,6 +5,7 @@ const solicitudesController = require('../controllers/solicitudesController');
 router.get('/documentos', solicitudesController.verDocumentos);
 router.get('/estrategias', solicitudesController.verEstrategias);
 
-router.delete('/eliminar/:id', solicitudesController.eliminarDocumento);
+router.delete('/eliminar/documento/:id', solicitudesController.eliminarDocumento);
+router.delete('/eliminar/estrategia/:id', solicitudesController.eliminarEstrategia);
 
 module.exports = router;
