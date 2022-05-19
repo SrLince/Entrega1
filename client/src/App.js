@@ -14,6 +14,7 @@ import VerDocumento from './pages/VerDocumento';
 import CrearDocumento from './pages/CrearDocumento';
 import EditarDocumento from './pages/EditarDocumento';
 import Estrategias from './pages/Estrategias';
+import VerEstrategia from './pages/VerEstrategia';
 import CrearEstrategia from './pages/CrearEstrategia';
 import SolicitudesDocumentos from './pages/SolicitudesDocumentos';
 
@@ -44,6 +45,7 @@ function App() {
                 <Route exact path='/documentos/crear' component={CrearDocumento} />
                 <Route exact path='/documentos/editar/:id' component={EditarDocumento} />
                 <Route exact path='/estrategias/' component={Estrategias} />
+                <Route exact path='/estrategias/ver/:id' component={VerEstrategia} />
                 <Route exact path='/estrategias/crear' component={CrearEstrategia} />
                 <Route exact path='/solicitudes/documentos' component={SolicitudesDocumentos} />
               </>

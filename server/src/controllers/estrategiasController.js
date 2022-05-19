@@ -12,12 +12,15 @@ estrategiasController.verEstrategias = (req, res) => {
   });
 };
 
-estrategiasController.verSolicitudes = (req, res) => {
-
-};
-
-estrategiasController.verSolicitud = (req, res) => {
+estrategiasController.verEstrategia = (req, res) => {
   const id = req.params.id;
+  let query = 'SELECT nombre, descripcion, metodo, tipo, DATE_FORMAT(fecha, "%d-%m-%Y") AS fecha, condicion FROM estrategias WHERE id = ' + id + ' AND estado = "Disponible";';
+  mysqlConn.query(query, (err, sql) => {
+      if(err) {
+          res.json(err);
+      }
+      res.send(sql);
+  });
 };
 
 estrategiasController.crearEstrategias = (req, res) => {
