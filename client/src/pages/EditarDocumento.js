@@ -13,7 +13,6 @@ const EditarDocumento = () => {
     var modalMessage = '';
     
     const [documento, setDocumento] = useState({
-      id: id,
       nombre: '',
       descripcion: '',
       categoria: '',
@@ -142,7 +141,7 @@ const EditarDocumento = () => {
                   <div className='form-group'>
                       <label htmlFor='Documento'>Documento del proyecto</label>
                       <input type='file' className='form-control form-control-lg'
-                      placeholder='Ingrese documento del proyecto' name='archivo' onChange={e => onFileChange(e)} />
+                      accept='.pdf' name='archivo' onChange={e => onFileChange(e)} />
                   </div> 
                   <div className='mb-5 mt-5 d-flex justify-content-end'>
                       <Link className='btn btn-outline-primary' to={`/documentos`}>Volver</Link>

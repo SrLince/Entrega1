@@ -54,14 +54,14 @@ documentosController.editarDocumento = (req, res) => {
 
   var query = 'INSERT INTO solicitudes_doc SET ?';
   mysqlConn.query(query,{
-    id: id,
+    id_doc: id,
     nombre: nombre, 
     descripcion: descripcion, 
     categoria: categoria, 
     tipo: tipo
   }, (err, sql) => {
     if(err) {
-      res.send(err);
+      console.log(err);
     }
     res.send(sql);        
   });
