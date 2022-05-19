@@ -9,7 +9,7 @@ import GlobalFilter from '../layouts/main/GlobalFilter';
 
 const SolicitudesDocumentos = () => {
   const columns = useMemo(() => COLUMNS.Solicitudes, []);
-  const [data, setDocumentos] = useState([]);
+  const [ data, setDocumentos ] = useState([]);
   const [ isJP , setIsJP ] = useState(false);
   const [ selectedId , setSelectedId ] = useState(false);
 
